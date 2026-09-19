@@ -1,0 +1,12 @@
+{
+  "name": "zhaopin-root",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "preview": "npm --prefix frontend run preview",
+    "db:migrate:local": "npm --prefix frontend run db:migrate:local",
+    "db:migrate:remote": "npm --prefix frontend run db:migrate:remote",
+    "deploy": "npm --prefix frontend run deploy"
+  }
+}

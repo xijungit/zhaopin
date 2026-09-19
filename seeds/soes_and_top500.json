@@ -1,0 +1,382 @@
+[
+  {
+    "id": "cs_sgcc",
+    "company_name": "国家电网有限公司 (State Grid)",
+    "category": "央国企",
+    "portal_url": "https://zhaopin.sgcc.com.cn",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "每年10-11月第一批统考+次年3-4月第二批统考",
+    "status": "active"
+  },
+  {
+    "id": "cs_csg",
+    "company_name": "中国南方电网有限责任公司 (China Southern Power Grid)",
+    "category": "央国企",
+    "portal_url": "https://zhaopin.csg.cn",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "每年10-12月秋季批次+次年3-4月春季补充批",
+    "status": "active"
+  },
+  {
+    "id": "cs_chinamobile",
+    "company_name": "中国移动通信集团有限公司 (China Mobile)",
+    "category": "央国企",
+    "portal_url": "https://job.10086.cn",
+    "api_endpoint": "https://job.10086.cn/api/v1/campus/jobs",
+    "parser_type": "dayee_api",
+    "recruitment_season": "8-10月全国集中秋招统考+次年3-4月春季招聘",
+    "status": "active"
+  },
+  {
+    "id": "cs_chinatelecom",
+    "company_name": "中国电信集团有限公司 (China Telecom)",
+    "category": "央国企",
+    "portal_url": "https://job.chinatelecom.cn",
+    "api_endpoint": "",
+    "parser_type": "beisen_api",
+    "recruitment_season": "9-11月秋季校招大选拔+次年3-5月春补",
+    "status": "active"
+  },
+  {
+    "id": "cs_chinaunicom",
+    "company_name": "中国联合网络通信集团有限公司 (China Unicom)",
+    "category": "央国企",
+    "portal_url": "https://zglt.zhaopin.com",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "9-11月秋招全国统一机考+次年春招",
+    "status": "active"
+  },
+  {
+    "id": "cs_cnpc",
+    "company_name": "中国石油天然气集团有限公司 (CNPC)",
+    "category": "央国企",
+    "portal_url": "https://zhaopin.cnpc.com.cn",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "每年9-10月秋季高校毕业生统招入库机考",
+    "status": "active"
+  },
+  {
+    "id": "cs_sinopec",
+    "company_name": "中国石油化工集团有限公司 (Sinopec)",
+    "category": "央国企",
+    "portal_url": "https://job.sinopec.com",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "每年9-10月统一网络初选通用考试+次年春选",
+    "status": "active"
+  },
+  {
+    "id": "cs_crrc",
+    "company_name": "中国中车股份有限公司 (CRRC)",
+    "category": "央国企",
+    "portal_url": "https://crrcgc.zhaopin.com",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "每年9-11月大连/株洲/青岛等主机厂全国巡回秋招",
+    "status": "active"
+  },
+  {
+    "id": "cs_avic",
+    "company_name": "中国航空工业集团有限公司 (AVIC)",
+    "category": "央国企",
+    "portal_url": "https://avic.zhiye.com",
+    "api_endpoint": "https://avic.zhiye.com/api/campus/positions",
+    "parser_type": "beisen_api",
+    "recruitment_season": "每年8-11月各大主机所全国重点高校专场直签",
+    "status": "active"
+  },
+  {
+    "id": "cs_cscec",
+    "company_name": "中国建筑集团有限公司 (CSCEC)",
+    "category": "央国企",
+    "portal_url": "https://job.cscec.com",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "每年9-11月全国一测二测统考+春季补充测评",
+    "status": "active"
+  },
+  {
+    "id": "cs_crcc",
+    "company_name": "中国铁建股份有限公司 (CRCC)",
+    "category": "央国企",
+    "portal_url": "https://crcc.zhiye.com",
+    "api_endpoint": "https://crcc.zhiye.com/api/positions",
+    "parser_type": "beisen_api",
+    "recruitment_season": "每年9-12月各工程局/设计院大面积秋招",
+    "status": "active"
+  },
+  {
+    "id": "cs_casc",
+    "company_name": "中国航天科技集团有限公司 (CASC)",
+    "category": "央国企",
+    "portal_url": "https://spacetalent.casc.com.cn",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "8-10月八大研究院所高校专项引才计划",
+    "status": "active"
+  },
+  {
+    "id": "cs_chng",
+    "company_name": "中国华能集团有限公司 (China Huaneng)",
+    "category": "央国企",
+    "portal_url": "https://zhaopin.chng.com.cn",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "9-11月全国联考+次年3-4月春招补录",
+    "status": "active"
+  },
+  {
+    "id": "cs_sinochem",
+    "company_name": "中国中化控股有限责任公司 (Sinochem Holdings)",
+    "category": "央国企",
+    "portal_url": "https://sinochem.zhiye.com",
+    "api_endpoint": "https://sinochem.zhiye.com/api/positions",
+    "parser_type": "beisen_api",
+    "recruitment_season": "9-11月管培生/研发岗秋招统招",
+    "status": "active"
+  },
+  {
+    "id": "cs_icbc",
+    "company_name": "中国工商银行 (ICBC)",
+    "category": "金融券商",
+    "portal_url": "https://job.icbc.com.cn",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "每年9-11月全行统一笔试+次年3-4月春招",
+    "status": "active"
+  },
+  {
+    "id": "cs_ccb",
+    "company_name": "中国建设银行 (CCB)",
+    "category": "金融券商",
+    "portal_url": "http://job.ccb.com",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "每年9-10月建行总行与各级分行统一机考",
+    "status": "active"
+  },
+  {
+    "id": "cs_boc",
+    "company_name": "中国银行 (Bank of China)",
+    "category": "金融券商",
+    "portal_url": "https://campus.chinahr.com/pages/boc",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "每年9-11月秋招大选拔+次年春季招聘",
+    "status": "active"
+  },
+  {
+    "id": "cs_cmb",
+    "company_name": "招商银行股份有限公司 (China Merchants Bank)",
+    "category": "金融券商",
+    "portal_url": "https://career.cloud.cmbchina.com",
+    "api_endpoint": "https://career.cloud.cmbchina.com/api/campus/jobs",
+    "parser_type": "dayee_api",
+    "recruitment_season": "每年8-11月梦工厂FinTech夏令营+秋招统招",
+    "status": "active"
+  },
+  {
+    "id": "cs_citics",
+    "company_name": "中信证券股份有限公司 (CITIC Securities)",
+    "category": "金融券商",
+    "portal_url": "https://customer.citics.com/recruitment",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "每年7-9月暑期实习留用+10-12月秋招差额补录",
+    "status": "active"
+  },
+  {
+    "id": "cs_cicc",
+    "company_name": "中国国际金融股份有限公司 (CICC 中金公司)",
+    "category": "金融券商",
+    "portal_url": "https://cicc.zhiye.com",
+    "api_endpoint": "https://cicc.zhiye.com/api/positions",
+    "parser_type": "beisen_api",
+    "recruitment_season": "每年6-8月暑期实习转正考核+9-11月全球校园招聘",
+    "status": "active"
+  },
+  {
+    "id": "cs_tencent",
+    "company_name": "腾讯控股有限公司 (Tencent)",
+    "category": "互联网大厂",
+    "portal_url": "https://join.qq.com",
+    "api_endpoint": "https://join.qq.com/api/v1/campus/positions",
+    "parser_type": "html_selector",
+    "recruitment_season": "7-8月提前批拔尖计划+8-10月秋招+次年3-4月春招/暑期实习",
+    "status": "active"
+  },
+  {
+    "id": "cs_alibaba",
+    "company_name": "阿里巴巴集团 (Alibaba Group)",
+    "category": "互联网大厂",
+    "portal_url": "https://talent.alibaba.com/campus",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "7-8月秋招早鸟通道+8-10月秋招大部队+春招日常实习",
+    "status": "active"
+  },
+  {
+    "id": "cs_bytedance",
+    "company_name": "字节跳动 (ByteDance)",
+    "category": "互联网大厂",
+    "portal_url": "https://job.bytedance.com/campus",
+    "api_endpoint": "https://job.bytedance.com/api/v1/search/job/posts",
+    "parser_type": "html_selector",
+    "recruitment_season": "7-8月秋招提前批+8-10月秋招无笔试直面+春招",
+    "status": "active"
+  },
+  {
+    "id": "cs_meituan",
+    "company_name": "美团 (Meituan)",
+    "category": "互联网大厂",
+    "portal_url": "https://zhaopin.meituan.com/web/campus",
+    "api_endpoint": "https://zhaopin.meituan.com/api/v1/campus/jobs",
+    "parser_type": "html_selector",
+    "recruitment_season": "7-8月北斗计划+8-10月全序列秋招+次年3月春招",
+    "status": "active"
+  },
+  {
+    "id": "cs_kuaishou",
+    "company_name": "快手科技 (Kuaishou)",
+    "category": "互联网大厂",
+    "portal_url": "https://campus.kuaishou.cn",
+    "api_endpoint": "https://campus.kuaishou.cn/api/v1/open/jobs",
+    "parser_type": "moka_api",
+    "recruitment_season": "7-8月快星卓越计划+8-10月秋招+次年3-5月春招",
+    "status": "active"
+  },
+  {
+    "id": "cs_baidu",
+    "company_name": "百度在线网络技术有限公司 (Baidu)",
+    "category": "互联网大厂",
+    "portal_url": "https://talent.baidu.com/jobs/campus-list",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "7-8月AIDU计划提前批+8-10月常规秋招+次年春招",
+    "status": "active"
+  },
+  {
+    "id": "cs_pdd",
+    "company_name": "拼多多 (Pinduoduo)",
+    "category": "互联网大厂",
+    "portal_url": "https://careers.pinduoduo.com/campus",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "7-8月早期选拔+8-10月秋招高频线上笔试",
+    "status": "active"
+  },
+  {
+    "id": "cs_antgroup",
+    "company_name": "蚂蚁科技集团股份有限公司 (Ant Group)",
+    "category": "互联网大厂",
+    "portal_url": "https://talent.antgroup.com/campus",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "8-10月科技星计划与全系列校招",
+    "status": "active"
+  },
+  {
+    "id": "cs_xiaohongshu",
+    "company_name": "小红书 (RED)",
+    "category": "互联网大厂",
+    "portal_url": "https://job.xiaohongshu.com/campus",
+    "api_endpoint": "https://job.xiaohongshu.com/api/v1/campus/position/list",
+    "parser_type": "moka_api",
+    "recruitment_season": "7-8月REDstar顶尖计划+8-10月秋招大招募+春招",
+    "status": "active"
+  },
+  {
+    "id": "cs_netease",
+    "company_name": "网易公司 (NetEase / 互娱 & 雷火)",
+    "category": "互联网大厂",
+    "portal_url": "https://campus.163.com",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "7-8月互娱早鸟批/雷火盘古+8-10月秋招",
+    "status": "active"
+  },
+  {
+    "id": "cs_huawei",
+    "company_name": "华为技术有限公司 (Huawei)",
+    "category": "智能制造",
+    "portal_url": "https://career.huawei.com",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "7-8月天才少年/提前批+8-10月各业务部全国巡回招聘",
+    "status": "active"
+  },
+  {
+    "id": "cs_xiaomi",
+    "company_name": "小米集团 (Xiaomi)",
+    "category": "智能制造",
+    "portal_url": "https://hr.xiaomi.com/campus",
+    "api_endpoint": "https://hr.xiaomi.com/api/campus/jobs",
+    "parser_type": "dayee_api",
+    "recruitment_season": "8-10月秋季校园招聘+次年3-4月春招",
+    "status": "active"
+  },
+  {
+    "id": "cs_byd",
+    "company_name": "比亚迪股份有限公司 (BYD)",
+    "category": "智能制造",
+    "portal_url": "https://job.byd.com",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "8-11月万人校园秋季直签招聘工程",
+    "status": "active"
+  },
+  {
+    "id": "cs_dji",
+    "company_name": "大疆创新科技有限公司 (DJI)",
+    "category": "智能制造",
+    "portal_url": "https://we.dji.com/zh-CN/campus",
+    "api_endpoint": "https://we.dji.com/api/v1/campus/positions",
+    "parser_type": "moka_api",
+    "recruitment_season": "7-8月拓疆者计划+8-10月秋季校招+次年春招",
+    "status": "active"
+  },
+  {
+    "id": "cs_catl",
+    "company_name": "宁德时代新能源科技股份有限公司 (CATL)",
+    "category": "智能制造",
+    "portal_url": "https://talent.catl.com",
+    "api_endpoint": "https://talent.catl.com/api/campus/positions",
+    "parser_type": "beisen_api",
+    "recruitment_season": "8-11月极限制造与研发全球校招",
+    "status": "active"
+  },
+  {
+    "id": "cs_smic",
+    "company_name": "中芯国际集成电路制造有限公司 (SMIC)",
+    "category": "中国500强",
+    "portal_url": "https://smics.zhiye.com",
+    "api_endpoint": "https://smics.zhiye.com/api/positions",
+    "parser_type": "beisen_api",
+    "recruitment_season": "8-11月芯火传承校园招聘工程",
+    "status": "active"
+  },
+  {
+    "id": "cs_lenovo",
+    "company_name": "联想集团 (Lenovo)",
+    "category": "中国500强",
+    "portal_url": "https://talent.lenovo.com.cn",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "8-10月全球未来领袖管培生及研发大校招",
+    "status": "active"
+  },
+  {
+    "id": "cs_haier",
+    "company_name": "海尔智家股份有限公司 (Haier)",
+    "category": "中国500强",
+    "portal_url": "https://maker.haier.net/campus",
+    "api_endpoint": "",
+    "parser_type": "html_selector",
+    "recruitment_season": "8-11月创客未来校园秋招",
+    "status": "active"
+  }
+]

@@ -1,0 +1,342 @@
+{
+  "resources": [
+    {
+      "id": "res_001",
+      "title": "2026-2027北森在线测评 (Beisen) 全模块通关真题库与高分破局指南",
+      "category": "在线测评真题",
+      "description": "汇总北森系统言语理解、数字推理、逻辑推理、情境判断及职业性格测评题库，附详细解析公式与秒杀答题技巧。",
+      "file_format": "PDF + 题库模拟Excel",
+      "drive_url": "https://pan.quark.cn/s/beisen_2026_exam_pack",
+      "access_code": "bs88",
+      "points_required": 15
+    },
+    {
+      "id": "res_002",
+      "title": "互联网大厂历年笔试编程真题详解与高频LeetCode冲刺合集（腾讯/阿里/字节/美团/快手）",
+      "category": "大厂笔试编程",
+      "description": "历届秋招春招编程题真题代码与复盘（涵盖动态规划、树图论搜索、贪心、大数处理），全解支持C++/Java/Python/Go多语言。",
+      "file_format": "Markdown + PDF + 源码Zip",
+      "drive_url": "https://pan.baidu.com/s/1dache_code_exam_master",
+      "access_code": "code",
+      "points_required": 20
+    },
+    {
+      "id": "res_003",
+      "title": "国家电网历年统考（电工类/通信类/计算机类）真题卷及高频核心考点秘籍",
+      "category": "央国企笔试",
+      "description": "含国家电网一批、二批历年真题及模拟卷，覆盖电路、电磁场、电力系统分析及行测公共基础知识解析。",
+      "file_format": "高清PDF扫描件",
+      "drive_url": "https://pan.quark.cn/s/sgcc_exam_real_questions",
+      "access_code": "sg26",
+      "points_required": 18
+    },
+    {
+      "id": "res_004",
+      "title": "中国移动/电信/联通运营商秋招统考专业技术与综合素质题库汇总",
+      "category": "央国企笔试",
+      "description": "针对三大运营商机考行测、通信原理、计算机网络常识及企业文化专属模块的历年高频真题归纳总结。",
+      "file_format": "PDF电子书",
+      "drive_url": "https://pan.baidu.com/s/1telecom_operator_prep",
+      "access_code": "1008",
+      "points_required": 15
+    },
+    {
+      "id": "res_005",
+      "title": "国有六大行及股份制银行校招通用机考 (EPI+综合知识+英语) 冲刺宝典",
+      "category": "银行笔试",
+      "description": "工行、建行、中行、农行通用笔试题库：EPI职业能力测试技巧、微观宏观经济金融常识、托业英语解题技巧套卷。",
+      "file_format": "PDF + Word模考卷",
+      "drive_url": "https://pan.quark.cn/s/bank_campus_epi_bundle",
+      "access_code": "bank",
+      "points_required": 15
+    },
+    {
+      "id": "res_006",
+      "title": "顶尖投行与头部券商（中金/中信/华泰）核心估值建模与财务分析面试圣经",
+      "category": "券商投行",
+      "description": "经典三张表联动实操、DCF模型、LBO收购模型Excel实战模版，以及投行常考400问（Vault Guide & BIWS精华中译版）。",
+      "file_format": "Excel财务模型 + PDF",
+      "drive_url": "https://pan.baidu.com/s/1ibd_cicc_modeling_pack",
+      "access_code": "ibd8",
+      "points_required": 20
+    },
+    {
+      "id": "res_007",
+      "title": "常春藤与名企HR一致好评的中英文精选投行/大厂校招简历模板库（Word/LaTeX）",
+      "category": "简历模板",
+      "description": "包含30套通过ATS机器初筛的高通过率单页简历模板，针对技术开发、产品经理、行研分析、综合管培分类优化排版。",
+      "file_format": "Word + Overleaf LaTeX源文件",
+      "drive_url": "https://pan.quark.cn/s/ivy_ats_resume_templates",
+      "access_code": "cv99",
+      "points_required": 10
+    },
+    {
+      "id": "res_008",
+      "title": "产品经理校招冲刺课件：大厂竞品分析框架、PRD原型设计与商业化实战手册",
+      "category": "求职技能",
+      "description": "美团/腾讯/小红书资深产品总监审定：产品思维破局、指标体系统计、AB实验设计规范与高分竞品分析报告范本。",
+      "file_format": "PDF + Axure源文件",
+      "drive_url": "https://pan.baidu.com/s/1pm_master_campus_pack",
+      "access_code": "pm66",
+      "points_required": 15
+    },
+    {
+      "id": "res_009",
+      "title": "华为通用软件/算法历年上机机考题库（牛客网高频代码全AC解析）",
+      "category": "硬件大厂笔试",
+      "description": "华为机考三道题分值（100+100+200分）深度解析，覆盖递归回溯、DFS/BFS、图论并查集与字符串高效处理模板。",
+      "file_format": "PDF + Python/C++源码工程",
+      "drive_url": "https://pan.quark.cn/s/huawei_oj_exam_ac",
+      "access_code": "hw88",
+      "points_required": 18
+    },
+    {
+      "id": "res_010",
+      "title": "中石油/中石化通用能力考试综合知识与思想政治素养考点精华",
+      "category": "央国企笔试",
+      "description": "中石油中石化全国初选机考真题大纲全覆盖：行测常识、企业核心精神、时政热点题库与考前密押300题。",
+      "file_format": "PDF电子书",
+      "drive_url": "https://pan.baidu.com/s/1petro_exam_guide",
+      "access_code": "sino",
+      "points_required": 12
+    },
+    {
+      "id": "res_011",
+      "title": "无领导小组讨论 (群面) 破局秘籍：角色分工、框架搭建与20个高频真题演练",
+      "category": "面试技巧",
+      "description": "攻克国企与大厂管培群面杀手锏：破冰者Leader、时间把控Timer、结构框架搭建Recorder、陈述汇报Reporter万能话术模板。",
+      "file_format": "高清思维导图 + PDF演讲录音稿",
+      "drive_url": "https://pan.quark.cn/s/group_interview_star_handbook",
+      "access_code": "star",
+      "points_required": 12
+    },
+    {
+      "id": "res_012",
+      "title": "结构化面试与宝洁八大问 (STAR原则) 满分答辩范文库（通用国企/外企/大厂）",
+      "category": "面试技巧",
+      "description": "如何将大学项目、社团经历、竞赛成果精炼为标准STAR模型（情境-目标-行动-结果），附50篇可以直接套用的高分回答范本。",
+      "file_format": "Word可编辑文档 + PDF",
+      "drive_url": "https://pan.baidu.com/s/1pg8_star_interview_guide",
+      "access_code": "pg88",
+      "points_required": 10
+    },
+    {
+      "id": "res_013",
+      "title": "大厂系统设计 (System Design) 面试速成：从零设计短链系统到千万人流即时通讯",
+      "category": "技术面试",
+      "description": "高并发、高可用架构设计考题全攻略：限流降级、分布式缓存Redis、消息队列Kafka、分库分表及一致性协议深度推演。",
+      "file_format": "PDF电子书 + 架构白板脑图",
+      "drive_url": "https://pan.quark.cn/s/system_design_interview_roadmap",
+      "access_code": "sys8",
+      "points_required": 18
+    },
+    {
+      "id": "res_014",
+      "title": "大模型 (LLM) 与AIGC前沿岗位秋招复习指南：从Transformer架构到RAG/微调实战",
+      "category": "技术面试",
+      "description": "针对大模型算法/研发校招热点：Attention机制推导、LoRA微调实战、Prompt工程、向量检索与LangChain核心概念速通速记卡。",
+      "file_format": "PDF手写推导笔记 + 源码Notebook",
+      "drive_url": "https://pan.baidu.com/s/1llm_interview_handbook",
+      "access_code": "llm7",
+      "points_required": 20
+    },
+    {
+      "id": "res_015",
+      "title": "中车/中航/建筑央企综合素质测评与工程力学/机械设计基础速成小抄",
+      "category": "央国企笔试",
+      "description": "中国中车及中航工业下属主机厂/研究院笔试综合基础汇总，含材料力学、理论力学常考概念公式速查。",
+      "file_format": "PDF精编打印版",
+      "drive_url": "https://pan.quark.cn/s/crrc_avic_engineering_prep",
+      "access_code": "mech",
+      "points_required": 12
+    },
+    {
+      "id": "res_016",
+      "title": "字节跳动/腾讯互联网英文岗位国际化业务全英文面试常考QA与口语音频包",
+      "category": "外企与全球化",
+      "description": "针对TikTok/海外游戏/跨境电商岗位的全英文简历深挖、Behavioral Question与产品拆解标准回答及发音示例。",
+      "file_format": "MP3音频 + PDF对照手册",
+      "drive_url": "https://pan.baidu.com/s/1global_interview_english_pack",
+      "access_code": "eng8",
+      "points_required": 15
+    }
+  ],
+  "experiences": [
+    {
+      "id": "exp_001",
+      "title": "双非本985硕上岸腾讯微信后台开发SP级Offer！四轮技术面+HR面全真复盘",
+      "company_name": "腾讯控股有限公司",
+      "position_type": "技术研发-后台开发",
+      "round_tag": "技术终面/HR面",
+      "question_type": "高并发网络IO与分布式存储",
+      "summary": "从简历被捞、一面被问穿Epoll多路复用底层，到三面深挖Raft共识算法及手写LRU Cache，最终拿下微信核心团队SP级的完整上岸经历。",
+      "detail_content": "【背景 Situation】普通211本科保研985，实验室研究分布式计算。目标是微信广州技术团队。\n【任务 Task】在简历无大厂实习背景下，需要靠过硬的计算机底层基础和开源中间件项目赢得面试官认可。\n【行动 Action (STAR法则)】\n1. 一面（基础深度）：面试官直击Linux网络协议栈，要求详尽拆解TCP三次握手报文状态迁移，以及EPOLLLT和EPOLLET在高并发下的性能与惊群效应处理。我结合源码解析了epoll红黑树+就绪链表的机制。\n2. 二面（项目深挖）：就我实现的轻量级Raft集群展开，问到选举脑裂场景、日志压缩快照机制及日志乱序复制故障恢复，我通过画架构状态转移图清晰剖析。\n3. 三面（系统设计与手撕）：要求手写带并发保护的LRU Cache（基于双向链表+哈希表+读写锁），并设计一个高并发微信抢红包架构（重点解答了预扣库存、Redis Lua脚本原子操作与异步账务入库）。\n【结果 Result】面完三天收到HR面通知，一周内收到正式录用意向书，薪资定级SP档。",
+      "points_required": 8
+    },
+    {
+      "id": "exp_002",
+      "title": "字节跳动商业化后端三轮技术面连打+手撕Hard算法题硬核上岸通关记",
+      "company_name": "字节跳动",
+      "position_type": "技术研发-服务端开发",
+      "round_tag": "技术三面",
+      "question_type": "操作系统、Golang高并发调度与算法手撕",
+      "summary": "字节面试特点是高密度手撕算法+底层八股极限追问。本文深度复盘GMP调度模型细节、内存逃逸分析及接雨水变种题解题套路。",
+      "detail_content": "【背景 Situation】计算机本硕，投递字节跳动北京巨量引擎商业化架构组。\n【任务 Task】扛住字节著名的连续三轮技术轰炸，完成2道Hard/Medium手撕代码并回答深入底层的八股。\n【行动 Action】\n1. 算法题：分别手写了K个一组翻转链表、二叉树最大路径和，以及LRU缓存。面试官特意要求在白板编辑器无代码提示、零编译环境下一次性通过，并计算时间复杂度。\n2. Golang深度：追问Goroutine调度器的sysmon线程作用、网络轮询器netpoller机制、Channel的环形缓冲区与hchan锁竞争优化。\n3. MySQL与Redis实战：解释为什么B+树比B树更适合磁盘索引，以及在数十万QPS高并发下的缓存击穿、穿透与雪崩应对全套降级方案。\n【结果 Result】当晚系统显示面试全部通过，次日HR沟通意向。",
+      "points_required": 8
+    },
+    {
+      "id": "exp_003",
+      "title": "跨考非科班拿国家电网上海市电力公司一批统考第一名经验分享",
+      "company_name": "国家电网有限公司",
+      "position_type": "电气工程与调度运维",
+      "round_tag": "统一笔试+综合面试",
+      "question_type": "专业笔试核心题型、半结构化面试自我介绍与压力问答",
+      "summary": "详细梳理国网笔试电路/电力系统70分大头得分策略，以及上海国网面试双盲抽签、半结构化抽题答辩与家庭情况问询的最佳应答范式。",
+      "detail_content": "【背景 Situation】控制工程转考电气，面临国网笔试高淘汰率和综合面试两道关卡。\n【任务 Task】在短时间内攻坚电路理论、电力系统暂态稳态分析以及继电保护三大硬门槛，同时在结构化面试中脱颖而出。\n【行动 Action】\n1. 笔试攻坚：按照国家电网考纲刷完近5年历年真题及中国电力出版社配套习题，针对高频潮流计算、短路电流计算进行专题归纳，最终笔试考出81.5的高分。\n2. 综合面试：国网面试为结构化抽题：抽到了‘谈谈新型电力系统下大规模新能源并网对电网调频调峰带来的挑战及应对手段’。运用STAR法则从源网荷储四端切入，结合储能系统技术逻辑层次清晰作答；面对考官关于‘是否服从郊区变电站一线倒班’的压力问题，真诚表达基层扎实历练的决心。\n【结果 Result】综合成绩排名专业组第一，顺利签约上海市电力公司直属单位。",
+      "points_required": 8
+    },
+    {
+      "id": "exp_004",
+      "title": "华为中央软件院秋招14级直通：从上机满分到业务主管面综合素养复盘",
+      "company_name": "华为技术有限公司",
+      "position_type": "技术研发-软件工程",
+      "round_tag": "业务主管面/综合面",
+      "question_type": "项目架构设计、开源经历深挖与文化价值观匹配",
+      "summary": "解密华为上机机考技巧、专业一二面深度技术方案质询，以及如何通过业务主管综合面的压力性挑战。",
+      "detail_content": "【背景 Situation】通信工程硕士，参与过开源Linux底层驱动开发及学术论文发表。\n【任务 Task】通过华为机考门槛，并在专业两轮技术面试中展现强大的工程落地解决能力。\n【行动 Action】\n1. 机考：第一题简单模拟（100分），第二题贪心+双指针（100分），第三题树形动态规划（200分），30分钟完成前两题，第三题采用带备忘录的深度优先搜索拿到满分。\n2. 专业面：面试官非常关注代码的可维护性与异常安全，重点考察了Linux内核态与用户态数据拷贝优化（Zero-Copy零拷贝技术，如mmap与sendfile对比），以及多线程互斥锁与自旋锁在NUMA架构下的性能差异。\n3. 主管面：主管针对面对重大攻坚项目延期风险如何决策提问，我引用过往开源社区PR冲突攻关的经历，展现了严密的逻辑闭环和韧性。\n【结果 Result】获得华为最高等级蓝牌签约，录用为14级高级研发工程师。",
+      "points_required": 10
+    },
+    {
+      "id": "exp_005",
+      "title": "阿里巴巴淘天集团Java后端研发三轮面经：微服务高可用架构与MySQL内核调优",
+      "company_name": "阿里巴巴集团",
+      "position_type": "技术研发-Java服务端",
+      "round_tag": "交叉面/技术二面",
+      "question_type": "Java虚拟机内存模型、分布式事务Seata与分库分表实战",
+      "summary": "淘天核心业务高并发面试实录：JVM GC垃圾回收排查全流程（从OOM Dump日志分析到Arthas在线诊断工具），以及分库分表下全局唯一ID生成的推演。",
+      "detail_content": "【背景 Situation】计算机专业硕士，投递阿里巴巴淘天核心业务架构组。\n【行动 Action】\n1. JVM深入：面试官深入追问G1和ZGC垃圾收集器的并发标记周期与读写屏障机制，并现场给出一段伪代码，要求推演栈帧中的局部变量表逃逸与标量替换。\n2. 分布式事务：详述2PC、TCC和基于消息最终一致性方案的优劣，针对订单-库存系统秒杀扣减的一致性问题，推导Redis+本地消息表+事务消息结合落地方案。\n3. 线上故障定位：模拟一次生产环境CPU 100%和全堆内存泄漏的排查过程（top -H，jstack，jmap分析dump日志，结合Arthas watch实时追踪慢方法）。\n【结果 Result】顺利通过技术交叉面与HR面，收获淘天核心Offer。",
+      "points_required": 8
+    },
+    {
+      "id": "exp_006",
+      "title": "美团核心本地商业产品经理校招上岸：业务拆解、群面破局与业务负责人终面",
+      "company_name": "美团",
+      "position_type": "产品经理",
+      "round_tag": "群面/总监终面",
+      "question_type": "互联网商业化模式、用户体验漏斗模型与需求优先级排序",
+      "summary": "详细还原美团产品校招全流程：8人无领导小组讨论如何巧妙争取Timer和框架制定者角色，以及终面如何拆解美团即时零售在下沉市场的供给侧破局方案。",
+      "detail_content": "【背景 Situation】经管交叉背景硕士，有一段中厂商业化实习经历。\n【行动 Action】\n1. 群面阶段：题目为‘针对美团外卖高价值白领用户设计一款提升午餐时段复购率的功能机制’。在大家争相抢当Leader时，我主动承担Timer并率先在白板上列出‘用户画像拆解-痛点场景归纳-解决方案筛选-收益评估漏斗’四步分析法，引导团队顺利在时限前输出闭环方案。\n2. 业务面：面试官要求评估‘美团闪购与叮咚买菜在供应链前置仓上的效率差异’。我从SKU丰富度、履约履约半径、损耗率与单均履约成本四个维度做了严谨对比分析。\n【结果 Result】产品群面全组唯一通过，终面获评优秀产品新人评级。",
+      "points_required": 8
+    },
+    {
+      "id": "exp_007",
+      "title": "中国工商银行软件开发中心（珠海/广州）秋招技术面+无领导群面上岸全记录",
+      "company_name": "中国工商银行",
+      "position_type": "金融科技-软件研发",
+      "round_tag": "半结构化+群面",
+      "question_type": "分布式银行核心账务系统设计理念与团队协同能力",
+      "summary": "央企大行软开面试全透视：技术半结构化问答紧扣Spring Cloud金融级微服务拆分，群面讨论围绕银行业务智能化转型方案的推敲与立论。",
+      "detail_content": "【背景 Situation】重点高校软件工程专业，追求一线大行稳定发展与落户待遇。\n【行动 Action】\n1. 技术单面：工行面试官非常注重安全与稳健，重点问了分布式锁在高并发转账场景下的幂等性保证，以及金融交易系统的灰度发布与容灾双活部署模式。\n2. 综合群面：10人一组，讨论‘传统商业银行柜面业务AI智能化改造如何平衡银发老人体验与数字化效率’。我提出了‘分流引导+无障碍大字语音AI助手+兜底人工绿色通道’的渐进式混合服务方案，获得考官一致赞赏。\n【结果 Result】收到工行总行软开中心Offer。",
+      "points_required": 7
+    },
+    {
+      "id": "exp_008",
+      "title": "大疆创新嵌入式研发校招：从硬件原理图、Linux驱动到FreeRTOS实时操作系统",
+      "company_name": "大疆创新科技有限公司",
+      "position_type": "技术研发-嵌入式软硬件",
+      "round_tag": "技术二面",
+      "question_type": "底层总线协议、中断嵌套与实时任务调度",
+      "summary": "大疆对硬件底层功底要求极高。本文详细复盘I2C/SPI通信时序故障诊断、DMA传输缓冲区管理以及FreeRTOS优先级反转解决案例。",
+      "detail_content": "【背景 Situation】自动化/电子信息工程硕士，参加过全国大学生智能汽车竞赛与RoboMaster机甲大师赛。\n【行动 Action】\n1. 硬件电路原理：面试官拿出一张电机驱动电路原理图，现场问答MOSFET选型、续流二极管作用及RC吸收电路参数计算。\n2. RTOS底层原理：深入手撕FreeRTOS任务控制块（TCB），详述任务就绪列表与时间片轮转调度，重点解释互斥量（Mutex）利用优先级继承机制解决高低优先级任务反转死锁的具体过程。\n3. 实机调试：结合RoboMaster调试底盘CAN总线丢包的经历，讲透利用示波器捕捉波形反射并添加120欧姆终端电阻抗匹配的解决过程。\n【结果 Result】两轮技术考核均给出最高评级，顺利拿下大疆嵌入式研发Offer。",
+      "points_required": 9
+    },
+    {
+      "id": "exp_009",
+      "title": "中金公司投资银行部 (IBD) 暑期实习转正秋招面经：估值模型、财务尽调与Pitchbook",
+      "company_name": "中国国际金融股份有限公司",
+      "position_type": "金融业务-投资银行分析师",
+      "round_tag": "合伙人MD面",
+      "question_type": "企业三张财务报表拆解、IPO上市红线与商业逻辑判断",
+      "summary": "顶级投行校招实录：面对董事总经理（MD）长达45分钟的高压商业盘问，如何以严谨的财务逻辑与出色的抗压能力赢下全职Offer。",
+      "detail_content": "【背景 Situation】顶尖高校金融硕士，有一段券商行研和内资投行实习。\n【行动 Action】\n1. 财务技术面（Technical）：直接现场考核‘如果一家公司发生100万元的资本性支出（CapEx），折旧年限为10年，假设企业所得税率为25%，三张报表在第一年该如何变动？’清晰准确回答出现金流量表、利润表及资产负债表平衡变动过程。\n2. 行业与商业逻辑：面试官针对新能源光伏出海企业提出假设场景，要求快速搭建SWOT分析及盈利预测敏感性分析，指出关键风险点（反补贴关税政策及汇率波动）。\n3. 行为测试（Fit）：针对‘如何应对持续数周凌晨两点的紧急改稿？’展现了高抗压、精细度至上的投行专业精神。\n【结果 Result】成功从数百名实习生中斩获全职Analyst录用通知。",
+      "points_required": 10
+    },
+    {
+      "id": "exp_010",
+      "title": "快手大模型推荐算法工程师秋招复盘：从多任务学习框架到强化学习实时排序",
+      "company_name": "快手科技",
+      "position_type": "技术研发-算法工程师",
+      "round_tag": "技术二面/终面",
+      "question_type": "CTR预估、MMoE多门控混合专家网络与冷启动机制",
+      "summary": "短视频顶流快手算法校招实操：拆解亿级播放量下的短视频推荐系统链路（召回、粗排、精排、重排），并深入手推Transformer多头自注意力与梯度反向传播。",
+      "detail_content": "【背景 Situation】计算机应用技术硕士，实验室方向为图神经网络与信息推荐。\n【行动 Action】\n1. 经典模型深度：详细推导MMoE和PLE如何解决短视频多目标（点击率CTR与完播率、点赞率、转发率）之间的负迁移与跷跷板效应。\n2. 特征工程与在线计算：讨论百亿级特征下Embedding查表延迟优化，以及在线流式训练Parameter Server架构设计。\n3. 手撕算法：要求在无内置库辅助下手写K-Means聚类算法收敛过程，并手动推导Softmax损失函数的反向求导公式。\n【结果 Result】入选快手‘快星’顶尖人才计划并获得Offer。",
+      "points_required": 9
+    },
+    {
+      "id": "exp_011",
+      "title": "比亚迪汽车工程研究院智能网联研发校招：从AUTOSAR架构到CAN网络通信",
+      "company_name": "比亚迪股份有限公司",
+      "position_type": "智能制造-整车软件工程师",
+      "round_tag": "技术专业面",
+      "question_type": "车载总线协议、汽车安全功能ISO26262与C语言底层优化",
+      "summary": "新能源汽车霸主校招面试实况：车载ECU固件升级（UDS诊断协议0x27安全访问机制）、CAN-FD与车载以太网的未来演进。",
+      "detail_content": "【背景 Situation】车辆工程与计算机交叉学科背景。\n【行动 Action】\n1. 车载通信协议：详述传统CAN总线与CAN-FD在数据段长度与波特率切换上的底层区别，解释位填充机制与CRC校验位在物理层的纠错过程。\n2. 汽车软件标准：围绕AUTOSAR经典平台分层架构（BSW、RTE与应用层SWC）进行模块化接口拆解。\n3. 综合问答：讨论了比亚迪刀片电池与CTB（电池车身一体化）技术对于整车刚度及动力学控制的影响。\n【结果 Result】面试当天通过并直接完成线上意向签约。",
+      "points_required": 7
+    },
+    {
+      "id": "exp_012",
+      "title": "中国建筑八局/三局总部管培生结构化面试与二测通关经验分享",
+      "company_name": "中国建筑集团有限公司",
+      "position_type": "职能管培/工程技术",
+      "round_tag": "测评二测+局院线下面试",
+      "question_type": "施工组织设计编制、安全质量风险控制与团队服从执行力",
+      "summary": "中建系统校园招聘两轮统一测评通过技巧，以及在工程局总部直面考官时如何展现吃苦耐劳、善于统筹协同的央企工程师气质。",
+      "detail_content": "【背景 Situation】土木工程与工程管理专业本科，立志在央企基建系统发展。\n【行动 Action】\n1. 中建一测与二测：提前刷透中建测评专项题库，掌握空间折叠纸盒、图形规律与类比推理的高频秒杀技巧，顺利稳拿全国认证成绩单。\n2. 线下面试：局人事副局长亲自主考。围绕大型超高层项目雨季深基坑支护坍塌风险应急预案展开情境模拟，我结合实习工地实际案例，从地下水降水监测、应急加固支撑、人员分级疏散三个层面系统陈述。\n3. 个人价值观：针对常驻项目部的工作性质，展现出扎根一线、向一线工程要经验的脚踏实地态度。\n【结果 Result】顺利录用为中建八局总部优才管培生计划成员。",
+      "points_required": 6
+    },
+    {
+      "id": "exp_013",
+      "title": "小红书社区生态与商业化产品经理三面通关复盘：用户共情与增长飞轮",
+      "company_name": "小红书",
+      "position_type": "产品经理",
+      "round_tag": "业务总监面",
+      "question_type": "UGC内容社区冷启动、种草到拔草链路闭环与推荐生态平衡",
+      "summary": "以小红书重度用户视角拆解社区内容治理与商业化广告加载率（Ad Load）之间的博弈，拿下上海新天地总部产品管培Offer。",
+      "detail_content": "【背景 Situation】传播学硕士，拥有小红书万粉个人IP创作经验。\n【行动 Action】\n1. 一面（用户体验与共情）：深入拆解小红书双列瀑布流点击率与单列沉浸式体验的心理差异，从探索型动机和消费心智进行了严密论证。\n2. 二面（指标与策略）：探讨如何利用双向负反馈调节机制降低商业广告对自然内容生态的侵蚀，提出了基于用户停留时长与长效互动率的加权计费优化点。\n3. 三面（终审）：面试官要求构想一款面向下沉市场银发银发族群的小红书适老化极简模式，我从大字视听辅助、熟人关系圈分享、去除了复杂图文创作门槛的‘拍同款’方案完成完整PRD构思。\n【结果 Result】获得小红书全职产品经理意向书。",
+      "points_required": 8
+    },
+    {
+      "id": "exp_014",
+      "title": "中国移动通信集团浙江移动IT技术研发岗校招统考+综合双面通关",
+      "company_name": "中国移动通信集团有限公司",
+      "position_type": "技术研发-云计算与大数据",
+      "round_tag": "全省统考+专业双盲面试",
+      "question_type": "分布式微服务治理、网络运维自动化与团队沟通协调",
+      "summary": "浙江移动作为全国运营商IT数字化标杆，其面试技术水平完全看齐一线互联网大厂。复盘Spring Cloud微服务与行测冲刺经验。",
+      "detail_content": "【背景 Situation】信息与通信工程硕士，投递浙江移动杭州研发中心。\n【行动 Action】\n1. 全国统考：行测与专业综合考试，重点提升资料分析速算和逻辑推理速度，最终笔试在浙江省名列前茅。\n2. 综合专业面试：面试采用多对一双盲模式。考官重点考核微服务架构中熔断降级（Sentinel/Hystrix底层原理）、分布式链路追踪（SkyWalking）以及Docker容器化编排K8s的基本工作原理；同时结合移动营业厅‘双十一’充值缴费高并发峰值设计了消息队列平滑削峰填谷策略。\n【结果 Result】成功拿到浙江移动省公司本部技术研发Offer。",
+      "points_required": 7
+    },
+    {
+      "id": "exp_015",
+      "title": "小米集团手机部系统软件研发二面复盘：Linux内核内存管理与Android Framework",
+      "company_name": "小米集团",
+      "position_type": "技术研发-系统开发",
+      "round_tag": "技术二面",
+      "question_type": "Binder进程间通信机制、SurfaceFlinger渲染管道与内存回收",
+      "summary": "小米澎湃OS团队硬核系统底层技术面实录，全面梳理Android Framework核心服务初始化过程与Linux虚拟内存映射调优。",
+      "detail_content": "【背景 Situation】计算机科学与技术本科，主攻系统软件方向。\n【行动 Action】\n1. Android Framework底层：从Zygote进程孵化讲起，详解SystemServer启动核心服务过程，重点剖析Binder驱动底层基于mmap单次内存拷贝的实现原理。\n2. 内存管理：深挖Linux Slab分配器原理、页面抖动与LowMemoryKiller触发机制，现场写出如何通过自定义Native崩溃信号捕获崩溃堆栈。\n3. 算法手撕：高频手撕LRU缓存算法与二叉树后序遍历迭代写法，全部一次性AC并说明边界保护逻辑。\n【结果 Result】顺利拿到小米系统软件研发部Offer。",
+      "points_required": 8
+    },
+    {
+      "id": "exp_016",
+      "title": "中国中车青岛四方机车高铁电气设计研发校招上岸经验全梳理",
+      "company_name": "中国中车股份有限公司",
+      "position_type": "技术研发-电气工程师",
+      "round_tag": "技术专业面+综合考评",
+      "question_type": "交流传动控制系统、电磁兼容性(EMC)与大型国企合规意识",
+      "summary": "国家高速列车研发摇篮（青岛四方）面试实战回顾：矢量控制与直接转矩控制算法在动车组牵引电机的具体运用。",
+      "detail_content": "【背景 Situation】电力电子与电力传动硕士，立志献身中国高铁轨道交通制造事业。\n【行动 Action】\n1. 专业技能考查：面试官围绕高速动车组牵引变流器主电路拓扑（四象限整流器+PWM逆变器）展开质询，要求现场手绘整流电路并详细解释空间矢量脉宽调制（SVPWM）在母线电压波动时的稳压控制策略。\n2. 质量意识问答：高铁属于高安全性要求行业，面试官问及如果图纸发生设计冲突如何处理，我从工程标准化作业规范（SOP）和闭环复核机制给出了严谨作答。\n【结果 Result】当场确认录用并在青岛四方签约国家重点实验室平台岗位。",
+      "points_required": 7
+    }
+  ]
+}

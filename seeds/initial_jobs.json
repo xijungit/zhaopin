@@ -1,0 +1,913 @@
+[
+  {
+    "id": "job_001",
+    "company_name": "腾讯控股有限公司",
+    "industry": "互联网/软件",
+    "recruitment_type": "2027提前批",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "深圳",
+      "北京",
+      "上海"
+    ],
+    "job_title": "后台开发工程师（CSIG/TEG/IEG等核心事业群）",
+    "referral_code": "TXNEITUI2027",
+    "apply_url": "https://join.qq.com/post_detail.html?pid=1001",
+    "publish_time": "2026-09-19T07:00:00.000Z",
+    "deadline": "2026-11-15T23:59:59Z",
+    "status": "active",
+    "highlights": "行业领先薪资、全员免费班车及早晚免费三餐、房补安居计划50万",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_002",
+    "company_name": "字节跳动",
+    "industry": "互联网/人工智能",
+    "recruitment_type": "2027提前批",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "北京",
+      "上海",
+      "深圳",
+      "杭州"
+    ],
+    "job_title": "大模型算法工程师（Seed基础模型团队）",
+    "referral_code": "BYTEDANCE99",
+    "apply_url": "https://job.bytedance.com/campus/position/detail/201",
+    "publish_time": "2026-09-19T06:00:00.000Z",
+    "deadline": "2026-10-31T23:59:59Z",
+    "status": "active",
+    "highlights": "顶尖GPU算力资源、无笔试直通面试、顶薪SP/SSP不设限、就近租房补贴",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_003",
+    "company_name": "阿里巴巴集团",
+    "industry": "互联网/电商",
+    "recruitment_type": "2027提前批",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "杭州",
+      "北京"
+    ],
+    "job_title": "Java研发工程师（淘天技术团队/通义千问）",
+    "referral_code": "ALI2027VIP",
+    "apply_url": "https://talent.alibaba.com/campus/position-detail?id=301",
+    "publish_time": "2026-09-19T05:00:00.000Z",
+    "deadline": "2026-11-20T23:59:59Z",
+    "status": "active",
+    "highlights": "双导师带教体系、核心高并发万亿级业务场景、无息置业贷款",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_004",
+    "company_name": "国家电网有限公司",
+    "industry": "电力/能源",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发",
+      "职能管培"
+    ],
+    "cities": [
+      "北京",
+      "上海",
+      "南京",
+      "成都",
+      "全国"
+    ],
+    "job_title": "电力系统及自动化/信息通信科研管培生",
+    "referral_code": "",
+    "apply_url": "https://zhaopin.sgcc.com.cn/unitList.html",
+    "publish_time": "2026-09-19T04:00:00.000Z",
+    "deadline": "2026-11-10T18:00:00Z",
+    "status": "active",
+    "highlights": "中央直管央企六险二金、落户重点指标、稳定健全晋升通道",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_005",
+    "company_name": "华为技术有限公司",
+    "industry": "通信/硬件/ICT",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "深圳",
+      "上海",
+      "北京",
+      "南京",
+      "西安",
+      "成都"
+    ],
+    "job_title": "通用软件开发工程师（云计算/数通/无线产品线）",
+    "referral_code": "HWHR8899",
+    "apply_url": "https://career.huawei.com/reccam/campus/portal.html",
+    "publish_time": "2026-09-19T03:00:00.000Z",
+    "deadline": "2026-12-31T23:59:59Z",
+    "status": "active",
+    "highlights": "全员导师1对1辅导、全球化研发平台、丰厚年终绩效奖金与股票期权",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_006",
+    "company_name": "中国工商银行",
+    "industry": "银行/金融",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发",
+      "金融业务"
+    ],
+    "cities": [
+      "北京",
+      "上海",
+      "广州",
+      "全国"
+    ],
+    "job_title": "科技菁英计划（总行软件开发中心/数据中心）",
+    "referral_code": "",
+    "apply_url": "https://job.icbc.com.cn/pc/index.html",
+    "publish_time": "2026-09-19T02:00:00.000Z",
+    "deadline": "2026-10-25T24:00:00Z",
+    "status": "active",
+    "highlights": "六险二金、一线城市户口指标重点保障、总行平台战略级数字化转型孵化",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_007",
+    "company_name": "比亚迪股份有限公司",
+    "industry": "新能源汽车/高端制造",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "深圳",
+      "西安",
+      "长沙",
+      "常州"
+    ],
+    "job_title": "整车电子电气/智能底盘软件研发工程师",
+    "referral_code": "BYDSTAR2027",
+    "apply_url": "https://job.byd.com/portal/#/position/detail?id=701",
+    "publish_time": "2026-09-19T01:00:00.000Z",
+    "deadline": "2026-12-15T23:59:59Z",
+    "status": "active",
+    "highlights": "世界新能源汽车销冠平台、购车员工极高内购折扣、免费提供员工公寓",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_008",
+    "company_name": "大疆创新科技有限公司",
+    "industry": "智能硬件/机器人",
+    "recruitment_type": "2027提前批",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "深圳",
+      "上海"
+    ],
+    "job_title": "嵌入式软硬件开发工程师（无人机/手持影像团队）",
+    "referral_code": "DJINEITUI666",
+    "apply_url": "https://we.dji.com/zh-CN/position/detail?id=801",
+    "publish_time": "2026-09-18T23:00:00.000Z",
+    "deadline": "2026-11-01T23:59:59Z",
+    "status": "active",
+    "highlights": "全球无人机领军企业、极客工程研发文化、零食饮料无限量、免费健身房及班车",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_009",
+    "company_name": "中国移动通信集团有限公司",
+    "industry": "电信运营商/云计算",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发",
+      "市场运营"
+    ],
+    "cities": [
+      "北京",
+      "广州",
+      "苏州",
+      "杭州",
+      "全国"
+    ],
+    "job_title": "移研之星管培生（移动云/研究院/信息技术中心）",
+    "referral_code": "CMCC2027STAR",
+    "apply_url": "https://job.10086.cn/unit_list.html",
+    "publish_time": "2026-09-18T21:00:00.000Z",
+    "deadline": "2026-10-30T23:59:59Z",
+    "status": "active",
+    "highlights": "世界500强央企福利待遇、七险二金、定期体检与工会多维度暖心补贴",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_010",
+    "company_name": "美团",
+    "industry": "互联网/本地生活",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "产品经理"
+    ],
+    "cities": [
+      "北京",
+      "上海",
+      "深圳",
+      "成都"
+    ],
+    "job_title": "核心本地商业-产品经理（餐饮外卖/到店业务）",
+    "referral_code": "MT2027VIP",
+    "apply_url": "https://zhaopin.meituan.com/web/campus/position/detail?id=101",
+    "publish_time": "2026-09-18T19:00:00.000Z",
+    "deadline": "2026-11-15T23:59:59Z",
+    "status": "active",
+    "highlights": "产品圣经培训孵化营、亿级DAU真实消费互联网试炼场、弹性工时",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_011",
+    "company_name": "快手科技",
+    "industry": "互联网/短视频",
+    "recruitment_type": "2027提前批",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "北京",
+      "杭州",
+      "深圳"
+    ],
+    "job_title": "推荐算法工程师（快星卓越人才项目）",
+    "referral_code": "KSSTAR2027",
+    "apply_url": "https://campus.kuaishou.cn/position/detail?id=1101",
+    "publish_time": "2026-09-18T17:00:00.000Z",
+    "deadline": "2026-10-20T23:59:59Z",
+    "status": "active",
+    "highlights": "顶配技术大牛直接带导、千万级日活流量反馈、高额签字费及期权激励",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_012",
+    "company_name": "中国建筑集团有限公司",
+    "industry": "建筑工程/基础设施",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "职能管培",
+      "工程技术"
+    ],
+    "cities": [
+      "北京",
+      "上海",
+      "武汉",
+      "广州",
+      "全国"
+    ],
+    "job_title": "中建青苗工程管培生（一局/三局/八局核心局院）",
+    "referral_code": "",
+    "apply_url": "https://job.cscec.com/job/detail?id=1201",
+    "publish_time": "2026-09-18T15:00:00.000Z",
+    "deadline": "2026-11-30T23:59:59Z",
+    "status": "active",
+    "highlights": "央企第一梯队龙头、国家级超级工程参建履历、落户政策与优厚工程津贴",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_013",
+    "company_name": "小红书",
+    "industry": "互联网/社交电商",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "市场运营"
+    ],
+    "cities": [
+      "上海",
+      "北京"
+    ],
+    "job_title": "社区生态/商业化运营专家管培生",
+    "referral_code": "REDSTAR2027",
+    "apply_url": "https://job.xiaohongshu.com/campus/position/1301",
+    "publish_time": "2026-09-18T13:00:00.000Z",
+    "deadline": "2026-11-10T23:59:59Z",
+    "status": "active",
+    "highlights": "扁平开放的年轻化文化、上海新天地黄金办公圈、一日免费三餐+宠物友好",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_014",
+    "company_name": "中金公司 (CICC)",
+    "industry": "投资银行/证券",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "金融业务"
+    ],
+    "cities": [
+      "北京",
+      "上海",
+      "深圳",
+      "香港"
+    ],
+    "job_title": "投资银行部 (IBD) 分析师",
+    "referral_code": "CICCGRAD2027",
+    "apply_url": "https://cicc.zhiye.com/jobdetails/1401",
+    "publish_time": "2026-09-18T11:00:00.000Z",
+    "deadline": "2026-10-18T23:59:59Z",
+    "status": "active",
+    "highlights": "国内顶尖投行平台、明星IPO项目实操积累、与全球金融精英同行、高额Base+Bonus",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_015",
+    "company_name": "腾讯控股有限公司",
+    "industry": "互联网/软件",
+    "recruitment_type": "2027提前批",
+    "job_categories": [
+      "产品经理"
+    ],
+    "cities": [
+      "深圳",
+      "广州"
+    ],
+    "job_title": "微信产品经理（开放平台/视频号/微信支付）",
+    "referral_code": "TXWXPRODUCT",
+    "apply_url": "https://join.qq.com/post_detail.html?pid=1015",
+    "publish_time": "2026-09-17T10:00:00Z",
+    "deadline": "2026-11-20T23:59:59Z",
+    "status": "active",
+    "highlights": "国民级产品决策参与、顶尖导师指导、腾讯学堂顶尖产品培训",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_016",
+    "company_name": "字节跳动",
+    "industry": "互联网/文娱",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "产品经理"
+    ],
+    "cities": [
+      "北京",
+      "上海",
+      "深圳"
+    ],
+    "job_title": "抖音/TikTok核心产品经理",
+    "referral_code": "BYTEDANCE99",
+    "apply_url": "https://job.bytedance.com/campus/position/detail/216",
+    "publish_time": "2026-09-17T11:30:00Z",
+    "deadline": "2026-11-30T23:59:59Z",
+    "status": "active",
+    "highlights": "全球百国破圈产品影响力、数据驱动严密方法论、全面租房补贴与健身房",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_017",
+    "company_name": "中国电信集团有限公司",
+    "industry": "电信运营商/算力",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "北京",
+      "上海",
+      "广州",
+      "成都"
+    ],
+    "job_title": "天翼云研发工程师（分布式存储/容器网络/智算中心）",
+    "referral_code": "CT2027CLOUD",
+    "apply_url": "https://job.chinatelecom.cn/job/1701",
+    "publish_time": "2026-09-16T14:20:00Z",
+    "deadline": "2026-11-15T23:59:59Z",
+    "status": "active",
+    "highlights": "国云主力军核心项目、央企骨干编制、技术津贴、全流程落户辅导",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_018",
+    "company_name": "中国联合网络通信集团有限公司",
+    "industry": "电信运营商",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发",
+      "解决方案"
+    ],
+    "cities": [
+      "北京",
+      "济南",
+      "南京",
+      "武汉"
+    ],
+    "job_title": "联通数科大数据与AI工程师",
+    "referral_code": "",
+    "apply_url": "https://zglt.zhaopin.com/job/detail/1801",
+    "publish_time": "2026-09-16T16:00:00Z",
+    "deadline": "2026-11-20T23:59:59Z",
+    "status": "active",
+    "highlights": "数字化新引擎、健全的青年骨干成长快车道、企业年金与丰厚节日慰问",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_019",
+    "company_name": "中国中车股份有限公司",
+    "industry": "轨道交通/高端制造",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "株洲",
+      "青岛",
+      "大连",
+      "北京"
+    ],
+    "job_title": "高铁电力牵引与列控算法研发工程师",
+    "referral_code": "CRRC2027GO",
+    "apply_url": "https://crrcgc.zhaopin.com/position/1901",
+    "publish_time": "2026-09-15T09:00:00Z",
+    "deadline": "2026-12-01T23:59:59Z",
+    "status": "active",
+    "highlights": "大国重器研发平台、事业编制/国企核心待遇、提供人才定向购房补贴",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_020",
+    "company_name": "中国航空工业集团有限公司",
+    "industry": "航空航天/国防军工",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "成都",
+      "沈阳",
+      "西安",
+      "上海"
+    ],
+    "job_title": "飞机飞控与航电软件系统工程师（主机研究所）",
+    "referral_code": "",
+    "apply_url": "https://avic.zhiye.com/job/detail/2001",
+    "publish_time": "2026-09-15T15:00:00Z",
+    "deadline": "2026-11-25T23:59:59Z",
+    "status": "active",
+    "highlights": "航空报国崇高事业平台、解决重点城市户口、配套职工福利房及安家费",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_021",
+    "company_name": "中国建设银行",
+    "industry": "银行/金融",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "职能管培",
+      "金融业务"
+    ],
+    "cities": [
+      "北京",
+      "上海",
+      "深圳",
+      "全国"
+    ],
+    "job_title": "总行/直属机构未来金融家管培生",
+    "referral_code": "",
+    "apply_url": "http://job.ccb.com/job/2101",
+    "publish_time": "2026-09-14T08:30:00Z",
+    "deadline": "2026-10-31T24:00:00Z",
+    "status": "active",
+    "highlights": "总行多岗位轮岗机会、全球化视野赋能、七险二金与子女医疗互助",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_022",
+    "company_name": "中信证券股份有限公司",
+    "industry": "证券/投资银行",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "金融业务",
+      "技术研发"
+    ],
+    "cities": [
+      "深圳",
+      "北京",
+      "上海"
+    ],
+    "job_title": "金融科技与量化交易系统开发工程师",
+    "referral_code": "CITIC2027TECH",
+    "apply_url": "https://customer.citics.com/recruitment/job/2201",
+    "publish_time": "2026-09-14T11:00:00Z",
+    "deadline": "2026-11-15T23:59:59Z",
+    "status": "active",
+    "highlights": "券商航母核心核心平台、顶尖量化回测系统实操、市场化高额激励奖金",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_023",
+    "company_name": "招商银行股份有限公司",
+    "industry": "银行/金融科技",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "深圳",
+      "杭州"
+    ],
+    "job_title": "招银网络科技-全栈软件开发工程师",
+    "referral_code": "CMBTECH2027",
+    "apply_url": "https://career.cloud.cmbchina.com/job/2301",
+    "publish_time": "2026-09-13T10:00:00Z",
+    "deadline": "2026-11-10T23:59:59Z",
+    "status": "active",
+    "highlights": "银行界公认Fintech领跑者、全额缴纳公积金、补充商业医疗保险及餐补",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_024",
+    "company_name": "小米集团",
+    "industry": "智能硬件/消费电子",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "北京",
+      "武汉",
+      "深圳"
+    ],
+    "job_title": "澎湃OS系统架构研发工程师",
+    "referral_code": "MI2027VIP",
+    "apply_url": "https://hr.xiaomi.com/campus/position/2401",
+    "publish_time": "2026-09-13T14:30:00Z",
+    "deadline": "2026-12-10T23:59:59Z",
+    "status": "active",
+    "highlights": "人车家全生态核心基座研发、员工买房超低利息贷款、全套小米智能家电内购",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_025",
+    "company_name": "宁德时代新能源科技股份有限公司",
+    "industry": "新能源/动力电池",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "宁德",
+      "上海",
+      "厦门",
+      "深圳"
+    ],
+    "job_title": "电芯材料研发工程师 / 电池管理系统(BMS)工程师",
+    "referral_code": "CATLHR2027",
+    "apply_url": "https://talent.catl.com/job/2501",
+    "publish_time": "2026-09-12T09:15:00Z",
+    "deadline": "2026-12-20T23:59:59Z",
+    "status": "active",
+    "highlights": "全球动力电池霸主、顶尖实验室研发配套、丰厚安家安置费、海外出差补贴",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_026",
+    "company_name": "中芯国际",
+    "industry": "半导体/芯片制造",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发",
+      "工程技术"
+    ],
+    "cities": [
+      "上海",
+      "北京",
+      "天津",
+      "深圳"
+    ],
+    "job_title": "集成电路工艺整合工程师 (PIE)",
+    "referral_code": "SMICCHIP2027",
+    "apply_url": "https://smics.zhiye.com/job/2601",
+    "publish_time": "2026-09-12T16:00:00Z",
+    "deadline": "2026-11-30T23:59:59Z",
+    "status": "active",
+    "highlights": "集成电路国家支柱、快速解决一线城市户口、员工配套公租房及班车",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_027",
+    "company_name": "百度",
+    "industry": "互联网/人工智能",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "北京",
+      "上海",
+      "深圳"
+    ],
+    "job_title": "文心大模型预训练/微调工程师",
+    "referral_code": "BAIDUVIP2027",
+    "apply_url": "https://talent.baidu.com/jobs/campus-item?id=2701",
+    "publish_time": "2026-09-11T13:00:00Z",
+    "deadline": "2026-11-15T23:59:59Z",
+    "status": "active",
+    "highlights": "AI黄埔军校底层框架浸润、百度飞桨生态直通、顶配弹性工时与健身房",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_028",
+    "company_name": "拼多多",
+    "industry": "互联网/跨境电商",
+    "recruitment_type": "2027提前批",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "上海"
+    ],
+    "job_title": "服务端研发工程师（TEMU全球化电商中台）",
+    "referral_code": "PDD2027TOP",
+    "apply_url": "https://careers.pinduoduo.com/campus/detail?id=2801",
+    "publish_time": "2026-09-11T17:00:00Z",
+    "deadline": "2026-10-25T23:59:59Z",
+    "status": "active",
+    "highlights": "业界顶尖薪酬竞争力、出海业务高速增长风口、包三餐与水果点心零食",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_029",
+    "company_name": "网易公司",
+    "industry": "游戏/文娱",
+    "recruitment_type": "2027提前批",
+    "job_categories": [
+      "技术研发",
+      "美术设计"
+    ],
+    "cities": [
+      "广州",
+      "杭州",
+      "上海"
+    ],
+    "job_title": "游戏引擎/客户端研发工程师（互娱卓越项目）",
+    "referral_code": "NETEASE2027G",
+    "apply_url": "https://campus.163.com/job/2901",
+    "publish_time": "2026-09-10T10:00:00Z",
+    "deadline": "2026-11-05T23:59:59Z",
+    "status": "active",
+    "highlights": "猪厂食堂名扬天下免费四餐、自研顶尖Messiah引擎实践、浓厚游戏文化",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_030",
+    "company_name": "中国铁建股份有限公司",
+    "industry": "建筑工程",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "工程技术",
+      "职能管培"
+    ],
+    "cities": [
+      "北京",
+      "成都",
+      "西安",
+      "广州",
+      "全国"
+    ],
+    "job_title": "铁建栋梁管培生（桥隧/城轨/智能勘察设计院）",
+    "referral_code": "",
+    "apply_url": "https://crcc.zhiye.com/job/3001",
+    "publish_time": "2026-09-10T15:00:00Z",
+    "deadline": "2026-12-10T23:59:59Z",
+    "status": "active",
+    "highlights": "万亿基建领头羊央企、完备的青年干部培养导师制、全额住房公积金与六险",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_031",
+    "company_name": "中国石油天然气集团有限公司",
+    "industry": "石油化工/能源",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发",
+      "职能管培"
+    ],
+    "cities": [
+      "北京",
+      "大庆",
+      "成都",
+      "西安",
+      "全国"
+    ],
+    "job_title": "油气勘探开发及新能源技术管培生",
+    "referral_code": "",
+    "apply_url": "https://zhaopin.cnpc.com.cn/job/3101",
+    "publish_time": "2026-09-09T09:00:00Z",
+    "deadline": "2026-10-25T18:00:00Z",
+    "status": "active",
+    "highlights": "老牌骨干央企保障、国家重点实验室科研平台、企业年金、职工带薪疗休养",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_032",
+    "company_name": "中国中化控股有限责任公司",
+    "industry": "化工/材料",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发",
+      "市场运营"
+    ],
+    "cities": [
+      "北京",
+      "上海",
+      "扬州",
+      "连云港"
+    ],
+    "job_title": "新材料与绿色化工科技研发工程师",
+    "referral_code": "SINOCHEM2027",
+    "apply_url": "https://sinochem.zhiye.com/job/3201",
+    "publish_time": "2026-09-09T14:00:00Z",
+    "deadline": "2026-11-20T23:59:59Z",
+    "status": "active",
+    "highlights": "万亿级综合化工航母、全球科研轮岗契机、完善的人才安居和健康守护体系",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_033",
+    "company_name": "联想集团",
+    "industry": "IT/计算机软硬件",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发",
+      "产品经理"
+    ],
+    "cities": [
+      "北京",
+      "上海",
+      "武汉",
+      "深圳"
+    ],
+    "job_title": "AI PC端侧智能化软件架构师（管培生）",
+    "referral_code": "LENOVO2027FUTURE",
+    "apply_url": "https://talent.lenovo.com.cn/job/3301",
+    "publish_time": "2026-09-08T11:00:00Z",
+    "deadline": "2026-11-15T23:59:59Z",
+    "status": "active",
+    "highlights": "全球500强跨国办公文化、不加班WLB标杆企业、15天超长带薪年假",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_034",
+    "company_name": "海尔智家股份有限公司",
+    "industry": "智能家电/物联网",
+    "recruitment_type": "2027秋招",
+    "job_categories": [
+      "技术研发",
+      "市场运营"
+    ],
+    "cities": [
+      "青岛",
+      "上海",
+      "北京"
+    ],
+    "job_title": "三翼鸟智慧家庭IOT全栈研发工程师",
+    "referral_code": "HAIER2027MAKER",
+    "apply_url": "https://maker.haier.net/job/3401",
+    "publish_time": "2026-09-08T15:30:00Z",
+    "deadline": "2026-11-30T23:59:59Z",
+    "status": "active",
+    "highlights": "人单合一创客文化、青岛海景园区、员工低息免息购房无忧计划",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_035",
+    "company_name": "蚂蚁科技集团股份有限公司",
+    "industry": "金融科技/互联网",
+    "recruitment_type": "2027提前批",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "杭州",
+      "上海",
+      "北京"
+    ],
+    "job_title": "隐私计算与Web3密码学研发专家（科技星）",
+    "referral_code": "ANTSTAR2027",
+    "apply_url": "https://talent.antgroup.com/campus/detail?id=3501",
+    "publish_time": "2026-09-07T10:00:00Z",
+    "deadline": "2026-10-30T23:59:59Z",
+    "status": "active",
+    "highlights": "世界领先安全科技团队、高额科技津贴与期权分配、iHome置业贷款借款",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_036",
+    "company_name": "腾讯控股有限公司",
+    "industry": "互联网/软件",
+    "recruitment_type": "日常实习",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "深圳",
+      "广州",
+      "北京"
+    ],
+    "job_title": "前端开发日常实习生（长期招募-转正率极高）",
+    "referral_code": "TXINTERN2026",
+    "apply_url": "https://join.qq.com/intern/detail?id=3601",
+    "publish_time": "2026-09-18T16:00:00Z",
+    "deadline": "2026-12-31T23:59:59Z",
+    "status": "active",
+    "highlights": "日薪400-600元、异地租房补贴每月1500元、早晚全城豪华大巴接送",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_037",
+    "company_name": "字节跳动",
+    "industry": "互联网/广告",
+    "recruitment_type": "2026秋招补录",
+    "job_categories": [
+      "市场运营"
+    ],
+    "cities": [
+      "北京",
+      "上海"
+    ],
+    "job_title": "巨量引擎商业化投放运营经理（急招补录）",
+    "referral_code": "BYTEDANCEBULU",
+    "apply_url": "https://job.bytedance.com/campus/detail/3701",
+    "publish_time": "2026-09-18T18:00:00Z",
+    "deadline": "2026-10-15T23:59:59Z",
+    "status": "active",
+    "highlights": "HC直出两周快速发Offer、商业闭环快速成长、免费下午茶及全套健身房",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_038",
+    "company_name": "美团",
+    "industry": "互联网/自动配送",
+    "recruitment_type": "日常实习",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "北京",
+      "深圳"
+    ],
+    "job_title": "自动车/无人机控制与规划算法实习生",
+    "referral_code": "MTINTERN2026",
+    "apply_url": "https://zhaopin.meituan.com/intern/detail?id=3801",
+    "publish_time": "2026-09-17T17:00:00Z",
+    "deadline": "2026-11-30T23:59:59Z",
+    "status": "active",
+    "highlights": "低空经济核心战略赛道、真机路测实战经验、导师倾囊相授、优秀者直发秋招绿卡",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_039",
+    "company_name": "大疆创新科技有限公司",
+    "industry": "智能硬件",
+    "recruitment_type": "日常实习",
+    "job_categories": [
+      "设计/创意",
+      "市场运营"
+    ],
+    "cities": [
+      "深圳"
+    ],
+    "job_title": "全球品牌影像创意制作与社媒运营实习生",
+    "referral_code": "DJICREAT2026",
+    "apply_url": "https://we.dji.com/zh-CN/intern/detail?id=3901",
+    "publish_time": "2026-09-16T18:30:00Z",
+    "deadline": "2026-12-31T23:59:59Z",
+    "status": "active",
+    "highlights": "全套大疆顶级无人机/云台免费把玩借用、高规格影像棚制作体验、实习薪酬优厚",
+    "is_official_sync": 1
+  },
+  {
+    "id": "job_040",
+    "company_name": "华为技术有限公司",
+    "industry": "ICT/数通",
+    "recruitment_type": "2026秋招补录",
+    "job_categories": [
+      "技术研发"
+    ],
+    "cities": [
+      "西安",
+      "成都",
+      "南京"
+    ],
+    "job_title": "网络技术工程师/技术支持专家（紧急补招）",
+    "referral_code": "HWFASTPASS",
+    "apply_url": "https://career.huawei.com/job/4001",
+    "publish_time": "2026-09-18T19:00:00Z",
+    "deadline": "2026-10-20T23:59:59Z",
+    "status": "active",
+    "highlights": "快速面试直通车、高起薪+常驻基地津贴、全球化工程实战阅历",
+    "is_official_sync": 1
+  }
+]
