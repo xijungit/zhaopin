@@ -1,5 +1,5 @@
--- 1. 清除旧测试占位数据（包括错误链接 pid=1001）
-DELETE FROM job_referrals WHERE id LIKE 'job_%' OR apply_url LIKE '%pid=1001%';
+-- 1. 清理初始化阶段虚构包含 pid=1001、旧 mock 占位以及残缺截断数据
+DELETE FROM job_referrals WHERE id LIKE 'job_%' OR apply_url LIKE '%pid=1001%' OR apply_url LIKE '%3fSu7kU%';
 
 -- Smartsheet Data Synchronized Import
 INSERT INTO job_referrals (
@@ -47,9 +47,9 @@ INSERT INTO job_referrals (
   job_title, referral_code, apply_url, publish_time, deadline, status,
   highlights, is_official_sync, dedup_hash, updated_at
 ) VALUES (
-  'smartsheet_0003_65babcf4', '智元机器人', '机器人/人工智能', '27届秋招', '["技术类","产品类","营销服类","采购类","职能类"]', '["上海","北京","深圳","苏州"]',
-  '技术类、产品类、营销服类、采购类、职能类', 'N3NGUCJ', 'https://agirobot.jobs.feishu.cn/s/3fSu7kU', '2026-09-16T08:00:00.000Z', '招满即止', 'active',
-  '具身智能领域Top企业——智元机器人（AGIBOT）2027秋招全面启动！聚焦具身人形机器人核心技术研发。', 1, '65babcf42fbbfd257d22c39196d106d7', CURRENT_TIMESTAMP
+  'smartsheet_0003_816e6eee', '智元机器人', '机器人/人工智能', '27届秋招', '["技术类","产品类","营销服类","采购类","职能类"]', '["上海","北京","深圳","苏州"]',
+  '技术类、产品类、营销服类、采购类、职能类', 'N3NGUCJ', 'https://agirobot.jobs.feishu.cn/s/3fSu7k60gXw', '2026-09-16T08:00:00.000Z', '招满即止', 'active',
+  '具身智能领域Top企业——智元机器人（AGIBOT）2027秋招全面启动！聚焦具身人形机器人核心技术研发。', 1, '816e6eee5eb1d3ed52be9df952818c96', CURRENT_TIMESTAMP
 ) ON CONFLICT(dedup_hash) DO UPDATE SET
   company_name = excluded.company_name,
   industry = excluded.industry,

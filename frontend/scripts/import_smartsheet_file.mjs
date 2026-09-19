@@ -26,12 +26,10 @@ for (const p of possibleXlsxPaths) {
   } catch {}
 }
 
-// 简单轻量 CSV 解析器（无外部依赖）
 function parseCsv(content) {
   const lines = content.split(/\r?\n/).filter((l) => l.trim())
   if (lines.length === 0) return []
 
-  // 解析带引号的一行
   function parseLine(line) {
     const row = []
     let current = ''
@@ -70,12 +68,10 @@ function parseCsv(content) {
   return rows
 }
 
-// 日期解析工具："2026年9月16日" -> ISO string
 export function parseChineseDate(dateStr) {
   if (!dateStr) return new Date().toISOString()
   if (dateStr instanceof Date) return dateStr.toISOString()
   
-  // 处理数字如 20260916 或 2026-09-16
   const clean = String(dateStr).trim()
   const m1 = clean.match(/(\d{4})[年/-](\d{1,2})[月/-](\d{1,2})/)
   if (m1) {
@@ -91,7 +87,6 @@ export function parseChineseDate(dateStr) {
   return new Date().toISOString()
 }
 
-// 城市与地点格式化
 export function parseCities(cityStr) {
   if (!cityStr) return ['全国']
   if (Array.isArray(cityStr)) return cityStr
@@ -103,7 +98,6 @@ export function parseCities(cityStr) {
   return tokens.length > 0 ? tokens : ['全国']
 }
 
-// 岗位类别格式化
 export function parseJobCategories(jobStr) {
   if (!jobStr) return ['综合类']
   if (Array.isArray(jobStr)) return jobStr
@@ -115,26 +109,37 @@ export function parseJobCategories(jobStr) {
   return tokens.length > 0 ? tokens : ['综合类']
 }
 
-// URL 协议补齐与校验
 export function normalizeUrl(rawUrl) {
   if (!rawUrl) return ''
   let url = String(rawUrl).trim()
   if (!url) return ''
+
+  if (url.includes('docs.qq.com/scenario/link.html') || url.includes('link-warning') || url.includes('docs.qq.com/links/')) {
+    try {
+      const parsed = new URL(url.startsWith('http') ? url : 'https://' + url)
+      const target = parsed.searchParams.get('url') || parsed.searchParams.get('target') || parsed.searchParams.get('dest')
+      if (target) {
+        url = decodeURIComponent(target).trim()
+      }
+    } catch {}
+  }
+
+  if (url.includes('...') || url.includes('…') || url.endsWith('.')) {
+    console.warn(`[URL Warning] Truncated URL detected: "${url}".`)
+  }
+
   if (!/^https?:\/\//i.test(url)) {
     url = 'https://' + url
   }
   return url
 }
 
-// 生成排重哈希
 export function generateDedupHash(company, title, url) {
   const raw = `${(company || '').trim()}_${(title || '').trim()}_${(url || '').trim()}`
   return crypto.createHash('sha256').update(raw).digest('hex').slice(0, 32)
 }
 
-// 标准化单行多维表格记录
 export function normalizeSmartsheetRow(row, index = 0) {
-  // 兼容多维表格可能的列名变体
   const company = row['企业名称'] || row['公司名称'] || row['公司'] || row['company_name'] || ''
   const industry = row['所在行业'] || row['行业'] || row['industry'] || '互联网/科技'
   const timeStr = row['启动/更新时间'] || row['更新时间'] || row['发布时间'] || row['publish_time'] || ''
@@ -173,7 +178,6 @@ export function normalizeSmartsheetRow(row, index = 0) {
   }
 }
 
-// 主执行函数
 export async function processSmartsheetFile(filePath) {
   if (!fs.existsSync(filePath)) {
     throw new Error(`File not found: ${filePath}`)
@@ -194,7 +198,6 @@ export async function processSmartsheetFile(filePath) {
       throw new Error('XLSX parser library not available. Please install xlsx or convert to CSV/JSON.')
     }
     const workbook = xlsxLib.readFile ? xlsxLib.readFile(filePath) : xlsxLib.default.readFile(filePath)
-    // 优先取“官方内推汇总”Sheet，否则取第一个
     const sheetName = workbook.SheetNames.find((n) => n.includes('官方内推') || n.includes('内推')) || workbook.SheetNames[0]
     const worksheet = workbook.Sheets[sheetName]
     const utils = xlsxLib.utils || xlsxLib.default.utils
@@ -215,7 +218,6 @@ export async function processSmartsheetFile(filePath) {
   return normalized
 }
 
-// 生成 SQL 迁移/插入代码
 export function generateUpsertSql(jobs) {
   let sql = '-- Smartsheet Data Synchronized Import\n'
   for (const j of jobs) {
@@ -253,13 +255,11 @@ export function generateUpsertSql(jobs) {
   return sql
 }
 
-// CLI 执行逻辑
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const targetArg = process.argv[2]
   let targetFile = targetArg ? path.resolve(process.cwd(), targetArg) : null
 
   if (!targetFile) {
-    // 自动在 seeds/ 目录查找
     const candidates = fs.readdirSync(seedsDir).filter((f) => /\.(xlsx|csv|json)$/i.test(f) && (f.includes('smartsheet') || f.includes('2027') || f.includes('referral') || f.includes('内推')))
     if (candidates.length > 0) {
       targetFile = path.join(seedsDir, candidates[0])
@@ -275,8 +275,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const jobs = await processSmartsheetFile(targetFile)
   const outSqlPath = path.resolve(__dirname, '../migrations/0006_clean_mock_and_import_real_data.sql')
   
-  // 清理旧 mock 数据的语句
-  const cleanMockSql = `-- 1. 清理初始化阶段虚构包含 pid=1001 及旧 mock 占位数据\nDELETE FROM job_referrals WHERE id LIKE 'job_%' OR apply_url LIKE '%pid=1001%';\n\n`
+  // 清理旧 mock 数据以及截断残留历史数据
+  const cleanMockSql = `-- 1. 清理初始化阶段虚构包含 pid=1001、旧 mock 占位以及残缺截断数据\nDELETE FROM job_referrals WHERE id LIKE 'job_%' OR apply_url LIKE '%pid=1001%' OR apply_url LIKE '%3fSu7kU%';\n\n`
   const upsertSql = generateUpsertSql(jobs)
   fs.writeFileSync(outSqlPath, cleanMockSql + upsertSql, 'utf-8')
   console.log(`[Success] Generated migration SQL with ${jobs.length} jobs at: ${outSqlPath}`)

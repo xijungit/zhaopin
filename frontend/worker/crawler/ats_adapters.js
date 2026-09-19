@@ -7,11 +7,22 @@ export function normalizeSmartsheetItem(row) {
   const jobTitle = row['招聘岗位'] || row['岗位名称'] || row['job_title'] || '2027届校园招聘'
   const cityStr = row['工作地点'] || row['地点'] || row['cities'] || '全国'
   const recruitType = row['校招类型'] || row['recruitment_type'] || '27届秋招'
-  let applyUrl = row['内推链接'] || row['网申链接'] || row['apply_url'] || ''
+  let rawUrl = row['内推链接'] || row['网申链接'] || row['apply_url'] || ''
   const refCode = row['内推码'] || row['推荐码'] || row['referral_code'] || ''
   const details = row['招聘详情'] || row['highlights'] || ''
 
   if (!company) return null
+
+  let applyUrl = String(rawUrl || '').trim()
+  if (applyUrl.includes('docs.qq.com/scenario/link.html') || applyUrl.includes('link-warning') || applyUrl.includes('docs.qq.com/links/')) {
+    try {
+      const parsed = new URL(applyUrl.startsWith('http') ? applyUrl : 'https://' + applyUrl)
+      const target = parsed.searchParams.get('url') || parsed.searchParams.get('target') || parsed.searchParams.get('dest')
+      if (target) {
+        applyUrl = decodeURIComponent(target).trim()
+      }
+    } catch {}
+  }
 
   if (applyUrl && !/^https?:\/\//i.test(applyUrl)) {
     applyUrl = 'https://' + applyUrl
