@@ -18,6 +18,9 @@ function handleCors(request) {
 
 export default {
   async fetch(request, env, ctx) {
+    // 兼容 binding 为 DB 或 zhaopin_platform_db
+    env.DB = env.DB || env.zhaopin_platform_db
+
     const url = new URL(request.url)
     const pathname = url.pathname
 
@@ -72,6 +75,7 @@ export default {
 
   // 定时 Cron 触发器 (每2小时自动轮询抓取各官网渠道)
   async scheduled(event, env, ctx) {
+    env.DB = env.DB || env.zhaopin_platform_db
     console.log('[Scheduled Cron Trigger] Starting recruitment crawler sync at', new Date().toISOString())
     ctx.waitUntil(syncAllActiveSources(env))
   }

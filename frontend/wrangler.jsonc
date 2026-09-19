@@ -1,40 +1,40 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "zhaopin-platform",
-  "main": "worker/index.js",
-  "compatibility_date": "2026-08-11",
-  "assets": {
-    "directory": "./dist/client",
-    "binding": "ASSETS",
-    "not_found_handling": "single-page-application",
-    "run_worker_first": [
-      "/api/*"
-    ]
-  },
-  "triggers": {
-    "crons": [
-      "0 */2 * * *"
-    ]
-  },
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "zhaopin-platform-db",
-      "database_id": "zhaopin-platform-db-id",
-      "migrations_dir": "migrations"
-    }
-  ],
-  "vars": {
-    "PLATFORM_NAME": "校招内推与名企招聘网",
-    "ADMIN_BOOTSTRAP_SECRET": "admin_zhaopin_init_2026"
-  },
-  "routes": [
-    {
-      "pattern": "zhaopin.xuchendl.com",
-      "zone_name": "xuchendl.com",
-      "custom_domain": true,
-      "enabled": true,
-      "previews_enabled": false
-    }
-  ]
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "zhaopin-platform",
+	"main": "worker/index.js",
+	"compatibility_date": "2026-08-11",
+	"assets": {
+		"directory": "./dist/client",
+		"binding": "ASSETS",
+		"not_found_handling": "single-page-application",
+		"run_worker_first": [
+			"/api/*"
+		]
+	},
+	"triggers": {
+		"crons": [
+			"0 */2 * * *"
+		]
+	},
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "zhaopin-platform-db",
+			"database_id": "50929fa5-e391-43fc-8129-19f789226834",
+			"migrations_dir": "migrations"
+		}
+	],
+	"vars": {
+		"PLATFORM_NAME": "校招内推与名企招聘网",
+		"ADMIN_BOOTSTRAP_SECRET": "admin_zhaopin_init_2026"
+	},
+	"routes": [
+		{
+			"pattern": "zhaopin.xuchendl.com",
+			"zone_name": "xuchendl.com",
+			"custom_domain": true,
+			"enabled": true,
+			"previews_enabled": false
+		}
+	]
 }
