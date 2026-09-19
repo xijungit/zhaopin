@@ -9,6 +9,8 @@
     "preview": "vite preview",
     "db:migrate:local": "wrangler d1 migrations apply zhaopin-platform-db --local",
     "db:migrate:remote": "wrangler d1 migrations apply zhaopin-platform-db --remote",
+    "sync:smartsheet": "node scripts/sync_tencent_smartsheet.mjs",
+    "import:smartsheet": "node scripts/import_smartsheet_file.mjs",
     "deploy": "vite build && wrangler deploy"
   },
   "dependencies": {
