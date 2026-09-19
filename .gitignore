@@ -39,3 +39,7 @@ lerna-debug.log*
 *.sw?
 .DS_Store
 Thumbs.db
+
+# Large network captures & raw har
+*.har
+t3cxoF_sample.json

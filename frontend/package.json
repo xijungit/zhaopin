@@ -11,7 +11,9 @@
     "db:migrate:remote": "wrangler d1 migrations apply zhaopin-platform-db --remote",
     "sync:smartsheet": "node scripts/sync_tencent_smartsheet.mjs",
     "import:smartsheet": "node scripts/import_smartsheet_file.mjs",
-    "deploy": "vite build && wrangler deploy"
+    "deploy": "vite build && wrangler deploy",
+    "import:resources": "node scripts/import_experiences_and_resources.mjs",
+    "import:excel": "python scripts/parse_excel_export.py && node scripts/import_experiences_and_resources.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",

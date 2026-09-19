@@ -273,10 +273,10 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   }
 
   const jobs = await processSmartsheetFile(targetFile)
-  const outSqlPath = path.resolve(__dirname, '../migrations/0006_clean_mock_and_import_real_data.sql')
+  const outSqlPath = path.resolve(__dirname, '../migrations/0010_import_real_smartsheet_321_referrals.sql')
   
   // 清理旧 mock 数据以及截断残留历史数据
-  const cleanMockSql = `-- 1. 清理初始化阶段虚构包含 pid=1001、旧 mock 占位以及残缺截断数据\nDELETE FROM job_referrals WHERE id LIKE 'job_%' OR apply_url LIKE '%pid=1001%' OR apply_url LIKE '%3fSu7kU%';\n\n`
+  const cleanMockSql = `-- 1. 清理初始化阶段虚构包含 pid=1001、旧 mock 占位以及残缺截断数据\nDELETE FROM job_referrals WHERE id LIKE 'job_%' OR id LIKE 'smartsheet_%' OR apply_url LIKE '%pid=1001%';\n\n`
   const upsertSql = generateUpsertSql(jobs)
   fs.writeFileSync(outSqlPath, cleanMockSql + upsertSql, 'utf-8')
   console.log(`[Success] Generated migration SQL with ${jobs.length} jobs at: ${outSqlPath}`)

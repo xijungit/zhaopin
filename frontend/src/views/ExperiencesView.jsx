@@ -8,11 +8,12 @@ export function ExperiencesView({ onTriggerUnlock, currentUser, onToast }) {
   const [q, setQ] = useState('')
   const [company, setCompany] = useState('全部')
 
-  const companies = ['全部', '腾讯', '字节跳动', '阿里巴巴', '华为', '国家电网', '美团', '快手', '工商银行', '大疆创新', '中金公司']
+  const companies = ['全部', '腾讯', '字节跳动', '美团', '快手', '荣耀HONOR', 'OPPO', '宁德时代', 'TP-LINK', '菜鸟集团', '汇川技术']
 
   const fetchExperiences = () => {
     setLoading(true)
-    const params = { q }
+    const params = {}
+    if (q.trim()) params.q = q.trim()
     if (company !== '全部') params.company = company
 
     apiClient.getExperiences(params).then((res) => {
@@ -37,7 +38,7 @@ export function ExperiencesView({ onTriggerUnlock, currentUser, onToast }) {
     <div className="view-container experiences-view">
       <div className="view-intro-banner">
         <h2>💡 大厂与名企面试真题 & 上岸经验复盘</h2>
-        <p>基于真实上岸学长学姐还原，深度覆盖 STAR 答题法则与技术追问破局。</p>
+        <p>基于多维表格真实上岸经验总结还原，深度覆盖整体招聘流程、高频真题考点与避坑指南。</p>
       </div>
 
       <div className="search-bar-wrap">

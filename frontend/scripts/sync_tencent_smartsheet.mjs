@@ -114,8 +114,8 @@ export async function runSync(options = {}) {
   console.log(`[Sync] Normalized ${normalizedJobs.length} authentic job referrals.`)
 
   // 3. 生成包含清理假数据 + 排重写入的 SQL 文件
-  const outSqlPath = path.resolve(__dirname, '../migrations/0006_clean_mock_and_import_real_data.sql')
-  const cleanMockSql = `-- 1. 清除旧测试占位数据（包括错误链接 pid=1001）\nDELETE FROM job_referrals WHERE id LIKE 'job_%' OR apply_url LIKE '%pid=1001%';\n\n`
+  const outSqlPath = path.resolve(__dirname, '../migrations/0010_import_real_smartsheet_321_referrals.sql')
+  const cleanMockSql = `-- 1. 清除旧测试占位数据（包括错误链接 pid=1001）\nDELETE FROM job_referrals WHERE id LIKE 'job_%' OR id LIKE 'smartsheet_%' OR apply_url LIKE '%pid=1001%';\n\n`
   const upsertSql = generateUpsertSql(normalizedJobs)
   fs.writeFileSync(outSqlPath, cleanMockSql + upsertSql, 'utf-8')
   console.log(`[Sync] Generated migration script at: ${outSqlPath}`)

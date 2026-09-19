@@ -8,11 +8,12 @@ export function ResourcesView({ onTriggerUnlock, onToast }) {
   const [q, setQ] = useState('')
   const [category, setCategory] = useState('全部')
 
-  const categories = ['全部', '测评题库', '笔试真题', '简历模板', '央企国企']
+  const categories = ['全部', '校招通关题库', '答题思路与秘籍', '大厂历年真题']
 
   const fetchResources = () => {
     setLoading(true)
-    const params = { q }
+    const params = {}
+    if (q.trim()) params.q = q.trim()
     if (category !== '全部') params.category = category
 
     apiClient.getResources(params).then((res) => {
@@ -28,11 +29,29 @@ export function ResourcesView({ onTriggerUnlock, onToast }) {
     fetchResources()
   }, [category])
 
+  const handleSearch = (e) => {
+    e.preventDefault()
+    fetchResources()
+  }
+
   return (
     <div className="view-container resources-view">
       <div className="view-intro-banner">
         <h2>📚 校招笔试全套题库与高分资料宝库</h2>
-        <p>网罗北森/SHL测评解析、大厂笔试真题源码、单页简历模板，一次兑换永久查阅。</p>
+        <p>汇聚校招通关题库、面试真题高分答题思路与互联网大厂历年真题试卷，一次兑换永久查阅。</p>
+      </div>
+
+      <div className="search-bar-wrap">
+        <form onSubmit={handleSearch} className="search-box">
+          <span className="search-icon">🔍</span>
+          <input
+            type="search"
+            placeholder="搜索资料名称、公司、岗位真题、知识点关键词..."
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+          />
+          <button type="submit" className="btn-search">搜索</button>
+        </form>
       </div>
 
       <div className="category-tabs">

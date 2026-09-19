@@ -43,7 +43,15 @@ export async function handleJobs(request, env, pathname) {
       params.push(`%${category}%`)
     }
     if (sourceCategory && sourceCategory !== '全部') {
-      sql += ` AND s.category = ?`
+      if (sourceCategory === '互联网大厂') {
+        sql += ` AND (s.category = ? OR j.industry LIKE '%互联网%' OR j.industry LIKE '%游戏%' OR j.industry LIKE '%科技%' OR j.industry LIKE '%AI%' OR j.industry LIKE '%智能驾驶%')`
+      } else if (sourceCategory === '央国企') {
+        sql += ` AND (s.category = ? OR j.industry LIKE '%国企%' OR j.industry LIKE '%银行%' OR j.industry LIKE '%电力%' OR j.company_name LIKE '%电网%' OR j.company_name LIKE '%电信%' OR j.company_name LIKE '%移动%')`
+      } else if (sourceCategory === '中国500强') {
+        sql += ` AND (s.category = ? OR j.industry LIKE '%制造业%' OR j.industry LIKE '%新能源%' OR j.industry LIKE '%汽车%' OR j.industry LIKE '%芯片%' OR j.industry LIKE '%金融%' OR j.industry LIKE '%快消%' OR j.industry LIKE '%手机%')`
+      } else {
+        sql += ` AND s.category = ?`
+      }
       params.push(sourceCategory)
     }
     if (onlyToday) {
