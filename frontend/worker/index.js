@@ -73,11 +73,40 @@ export default {
     return new Response('Zhaopin Platform API Ready', { status: 200 })
   },
 
-  // 定时 Cron 触发器 (每2小时自动轮询抓取各官网渠道)
+  // 定时 Cron 触发器 (每2小时自动轮询抓取各官网渠道 + 多维表格数据新鲜度看门狗)
   async scheduled(event, env, ctx) {
     env.DB = env.DB || env.zhaopin_platform_db
     console.log('[Scheduled Cron Trigger] Starting recruitment crawler sync at', new Date().toISOString())
-    ctx.waitUntil(syncAllActiveSources(env))
+    ctx.waitUntil(
+      (async () => {
+        await syncAllActiveSources(env)
+        await checkSmartsheetFreshness(env)
+      })()
+    )
+  }
+}
+
+// 【数据看门狗】检测多维表格导入岗位的新鲜度：
+// smartsheet_ / soe_ / ent_ 前缀行均来自腾讯文档增量导入，MAX(publish_time) 超过 7 天
+// 说明本机无人值守同步流水线可能中断，记录告警提示运维介入检查本地任务。
+async function checkSmartsheetFreshness(env) {
+  try {
+    const row = await env.DB.prepare(
+      `SELECT MAX(publish_time) AS latest FROM job_referrals WHERE id LIKE 'smartsheet_%' OR id LIKE 'soe_%' OR id LIKE 'ent_%'`
+    ).first()
+    const latest = row?.latest
+    if (!latest) {
+      console.warn('[Watchdog] D1 中未找到多维表格导入的岗位数据，请检查数据流水线状态')
+      return
+    }
+    const ageDays = (Date.now() - Date.parse(latest)) / 86400000
+    if (Number.isFinite(ageDays) && ageDays > 7) {
+      console.warn(`[Watchdog] 多维表格数据已过期: 最新 publish_time=${latest} (距今 ${ageDays.toFixed(1)} 天)，请检查本机 auto_sync_har.bat / 计划任务 Zhaopin_AutoHarSync`)
+    } else {
+      console.log(`[Watchdog] 多维表格数据新鲜 (最新 ${latest}，距今 ${ageDays.toFixed(1)} 天)`)
+    }
+  } catch (err) {
+    console.error('[Watchdog] 数据新鲜度检查失败:', err.message)
   }
 }
 

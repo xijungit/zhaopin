@@ -1,0 +1,32 @@
+{
+  "docUrl": "https://docs.qq.com/smartsheet/DRmRGYk14dW53VHdS",
+  "harPath": "seeds/docs.qq.com.har",
+  "cookieFile": "seeds/tencent_docs_cookie.txt",
+  "subTabs": [
+    { "id": "BB08J2", "title": "官方内推汇总", "keywords": ["官方内推汇总", "官方内推"] },
+    { "id": "tny2X0", "title": "企业网申信息汇总", "keywords": ["企业网申信息汇总", "企业网申"] },
+    { "id": "tXOMXd", "title": "校园招聘官方平台", "keywords": ["校园招聘官方平台", "校园招聘官方", "国企央企"] },
+    { "id": "tkJOfb", "title": "大厂面试经验总结", "keywords": ["大厂面试经验总结", "面试经验总结"] },
+    { "id": "tlO4ma", "title": "面试真题答题思路", "keywords": ["面试真题答题思路", "答题思路"] },
+    { "id": "tOh0uO", "title": "牛客/小红书面经", "keywords": ["牛客", "小红书面经"] },
+    { "id": "t3cxoF", "title": "校招资料库(题库)", "keywords": ["校招资料库", "题库"] },
+    { "id": "t2DetB", "title": "大厂历年真题合集", "keywords": ["大厂历年真题", "真题合集", "直题合集"] },
+    { "id": "tcv4Zk", "title": "地方人才政策汇总", "keywords": ["人才政策", "地方人才政策汇总"] }
+  ],
+  "timeouts": {
+    "pageMs": 60000,
+    "responseMs": 15000,
+    "scrollIntervalMs": 1200,
+    "quietWindowMs": 5000,
+    "maxScrollPasses": 60
+  },
+  "retries": { "max": 1, "delayMs": 3000 },
+  "fingerprint": {
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "viewport": { "width": 1920, "height": 1080 },
+    "locale": "zh-CN",
+    "timezoneId": "Asia/Shanghai"
+  },
+  "screenshotOnFail": "logs/crawler_error.png",
+  "minHarBytes": 2097152
+}
