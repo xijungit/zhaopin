@@ -5,6 +5,8 @@ export async function handleJobs(request, env, pathname) {
   // GET /api/jobs
   if (pathname === '/api/jobs' && method === 'GET') {
     const q = (url.searchParams.get('q') || '').trim()
+    const channelType = (url.searchParams.get('channel_type') || '').trim() || 'referral'
+    const soeType = (url.searchParams.get('soe_type') || '').trim()
     const industry = (url.searchParams.get('industry') || '').trim()
     const type = (url.searchParams.get('type') || '').trim()
     const city = (url.searchParams.get('city') || '').trim()
@@ -21,6 +23,16 @@ export async function handleJobs(request, env, pathname) {
       WHERE j.status = 'active'
     `
     const params = []
+
+    if (channelType && channelType !== 'all') {
+      sql += ` AND j.channel_type = ?`
+      params.push(channelType)
+    }
+
+    if (soeType && soeType !== '全部') {
+      sql += ` AND j.soe_type = ?`
+      params.push(soeType)
+    }
 
     if (q) {
       sql += ` AND (j.company_name LIKE ? OR j.job_title LIKE ? OR j.highlights LIKE ?)`
@@ -95,8 +107,19 @@ export async function handleJobs(request, env, pathname) {
 
   // GET /api/jobs/filters
   if (pathname === '/api/jobs/filters' && method === 'GET') {
-    const industries = await env.DB.prepare('SELECT DISTINCT industry FROM job_referrals WHERE status = "active"').all()
-    const types = await env.DB.prepare('SELECT DISTINCT recruitment_type FROM job_referrals WHERE status = "active"').all()
+    const channelType = (url.searchParams.get('channel_type') || '').trim() || 'referral'
+    
+    let indSql = 'SELECT DISTINCT industry FROM job_referrals WHERE status = "active"'
+    let typeSql = 'SELECT DISTINCT recruitment_type FROM job_referrals WHERE status = "active"'
+    const fParams = []
+    if (channelType && channelType !== 'all') {
+      indSql += ' AND channel_type = ?'
+      typeSql += ' AND channel_type = ?'
+      fParams.push(channelType)
+    }
+
+    const industries = await env.DB.prepare(indSql).bind(...fParams).all()
+    const types = await env.DB.prepare(typeSql).bind(...fParams).all()
     const sourceCategories = await env.DB.prepare('SELECT DISTINCT category FROM crawler_sources WHERE status = "active"').all()
 
     return Response.json({
@@ -104,6 +127,7 @@ export async function handleJobs(request, env, pathname) {
       recruitmentTypes: (types.results || []).map((r) => r.recruitment_type).filter(Boolean),
       sourceCategories: (sourceCategories.results || []).map((r) => r.category).filter(Boolean),
       cities: ['全国', '北京', '上海', '深圳', '广州', '杭州', '成都', '武汉', '南京', '西安'],
+      soeTypes: ['全部', '央企', '国企', '事业单位', '银行金融'],
     })
   }
 

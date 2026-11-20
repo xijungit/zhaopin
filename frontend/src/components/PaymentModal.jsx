@@ -61,7 +61,7 @@ export function PaymentModal({ onClose, onSuccess, onToast }) {
     if (!order?.orderId) return
     setLoading(true)
     try {
-      const res = await apiClient.mockPayComplete(order.orderId)
+      const res = await apiClient.selfConfirmPayOrder(order.orderId)
       if (res.isPaid) {
         setStep('success')
         onSuccess(order.points)
@@ -163,7 +163,7 @@ export function PaymentModal({ onClose, onSuccess, onToast }) {
                 <div className="qr-order-id">订单号: {order.orderId}</div>
 
                 <button className="btn-success btn-mock-pay" onClick={handleMockPay} disabled={loading}>
-                  {loading ? '处理中...' : '模拟支付成功 (开发者调试)'}
+                  {loading ? '正在核销入账...' : '✅ 我已完成扫码支付，确认到账'}
                 </button>
                 <button className="btn-secondary" onClick={() => setStep('select')}>
                   返回重选

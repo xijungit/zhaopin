@@ -13,8 +13,10 @@ export async function handleExperiences(request, env, pathname) {
     const offset = Math.max(parseInt(url.searchParams.get('offset') || '0', 10), 0)
 
     const user = await getSessionUser(request, env)
+    const isVip = !!(user && (user.is_treasure_vip || user.role === 'admin'))
+
     let unlockedIds = new Set()
-    if (user) {
+    if (user && !isVip) {
       const unlocks = await env.DB.prepare(
         'SELECT target_id FROM user_unlocks WHERE user_id = ? AND target_type = "experience"'
       ).bind(user.user_id).all()
@@ -43,7 +45,7 @@ export async function handleExperiences(request, env, pathname) {
     const { results } = await env.DB.prepare(sql).bind(...params).all()
 
     const formatted = (results || []).map((row) => {
-      const isUnlocked = row.points_required === 0 || unlockedIds.has(row.id) || (user && user.role === 'admin')
+      const isUnlocked = isVip || row.points_required === 0 || unlockedIds.has(row.id)
       return {
         id: row.id,
         title: row.title,
@@ -57,6 +59,7 @@ export async function handleExperiences(request, env, pathname) {
         view_count: row.view_count,
         created_at: row.created_at,
         is_unlocked: isUnlocked,
+        is_vip_unlocked: isVip,
         detail_content: isUnlocked ? row.detail_content : null,
       }
     })
@@ -71,13 +74,13 @@ export async function handleExperiences(request, env, pathname) {
   const detailMatch = pathname.match(/^\/api\/experiences\/([^/]+)$/)
   if (detailMatch && method === 'GET') {
     const expId = detailMatch[1]
-    const row = await env.DB.prepare('SELECT * FROM interview_experiences WHERE id = ?').bind(expId).first()
-    if (!row) return Response.json({ error: '面经未找到' }, { status: 404 })
-
-    await env.DB.prepare('UPDATE interview_experiences SET view_count = view_count + 1 WHERE id = ?').bind(expId).run()
-
     const user = await getSessionUser(request, env)
-    let isUnlocked = row.points_required === 0 || (user && user.role === 'admin')
+    const isVip = !!(user && (user.is_treasure_vip || user.role === 'admin'))
+
+    const exp = await env.DB.prepare('SELECT * FROM interview_experiences WHERE id = ?').bind(expId).first()
+    if (!exp) return Response.json({ error: '面经不存在' }, { status: 404 })
+
+    let isUnlocked = isVip || exp.points_required === 0
     if (user && !isUnlocked) {
       const unlock = await env.DB.prepare(
         'SELECT id FROM user_unlocks WHERE user_id = ? AND target_type = "experience" AND target_id = ?'
@@ -85,14 +88,20 @@ export async function handleExperiences(request, env, pathname) {
       if (unlock) isUnlocked = true
     }
 
+    // 更新阅读数
+    await env.DB.prepare('UPDATE interview_experiences SET view_count = view_count + 1 WHERE id = ?').bind(expId).run()
+
     return Response.json({
-      ...row,
-      is_unlocked: isUnlocked,
-      detail_content: isUnlocked ? row.detail_content : null,
+      item: {
+        ...exp,
+        is_unlocked: isUnlocked,
+        is_vip_unlocked: isVip,
+        detail_content: isUnlocked ? exp.detail_content : null,
+      }
     })
   }
 
-  // POST /api/experiences/:id/unlock (积分解锁)
+  // POST /api/experiences/:id/unlock
   const unlockMatch = pathname.match(/^\/api\/experiences\/([^/]+)\/unlock$/)
   if (unlockMatch && method === 'POST') {
     const expId = unlockMatch[1]
@@ -100,44 +109,65 @@ export async function handleExperiences(request, env, pathname) {
     if (!user) return Response.json({ error: '请先登录' }, { status: 401 })
 
     const exp = await env.DB.prepare('SELECT * FROM interview_experiences WHERE id = ?').bind(expId).first()
-    if (!exp) return Response.json({ error: '内容不存在' }, { status: 404 })
+    if (!exp) return Response.json({ error: '面经不存在' }, { status: 404 })
 
-    // 检查是否已经解锁
-    const existing = await env.DB.prepare(
+    // 藏宝阁 VIP 直接全场免积分解锁
+    if (user.is_treasure_vip || user.role === 'admin') {
+      return Response.json({
+        success: true,
+        isUnlocked: true,
+        detailContent: exp.detail_content,
+        balanceAfter: user.points,
+        isVipUnlocked: true,
+      })
+    }
+
+    // 检查是否已解锁
+    const already = await env.DB.prepare(
       'SELECT id FROM user_unlocks WHERE user_id = ? AND target_type = "experience" AND target_id = ?'
     ).bind(user.user_id, expId).first()
-    if (existing) {
-      return Response.json({ success: true, is_unlocked: true, detail_content: exp.detail_content })
-    }
 
-    const pointsNeeded = exp.points_required || 0
-    if (user.points < pointsNeeded) {
+    if (already) {
       return Response.json({
-        error: `积分不足，解锁需要 ${pointsNeeded} 积分，当前剩余 ${user.points} 积分`,
-        pointsNeeded,
-        currentPoints: user.points,
-      }, { status: 402 })
+        success: true,
+        isUnlocked: true,
+        detailContent: exp.detail_content,
+        balanceAfter: user.points,
+      })
     }
 
-    // 扣减积分并写入账本和解锁记录
-    const balanceAfter = user.points - pointsNeeded
+    // 积分判断
+    if (user.points < exp.points_required) {
+      return Response.json({
+        error: `积分不足，解锁需要 ${exp.points_required} 积分，当前仅剩 ${user.points} 积分，请充值或开通藏宝阁会员`,
+        insufficientPoints: true,
+        pointsRequired: exp.points_required,
+        currentPoints: user.points,
+      }, { status: 400 })
+    }
+
+    const balanceAfter = user.points - exp.points_required
+    const unlockId = crypto.randomUUID()
+    const ledgerId = crypto.randomUUID()
+
+    // 事务扣积分并记录解锁
     await env.DB.batch([
       env.DB.prepare('UPDATE users SET points = ? WHERE id = ?').bind(balanceAfter, user.user_id),
       env.DB.prepare(
-        `INSERT INTO points_ledger (id, user_id, amount, balance_after, action_type, related_id, remark)
-         VALUES (?, ?, ?, ?, 'unlock_experience', ?, ?)`
-      ).bind(crypto.randomUUID(), user.user_id, -pointsNeeded, balanceAfter, expId, `解锁面经《${exp.title}》`),
-      env.DB.prepare(
         `INSERT INTO user_unlocks (id, user_id, target_type, target_id, points_spent)
          VALUES (?, ?, 'experience', ?, ?)`
-      ).bind(crypto.randomUUID(), user.user_id, expId, pointsNeeded)
+      ).bind(unlockId, user.user_id, expId, exp.points_required),
+      env.DB.prepare(
+        `INSERT INTO points_ledger (id, user_id, amount, balance_after, action_type, related_id, remark)
+         VALUES (?, ?, ?, ?, 'unlock_experience', ?, ?)`
+      ).bind(ledgerId, user.user_id, -exp.points_required, balanceAfter, expId, `解锁面经《${exp.title}》`)
     ])
 
     return Response.json({
       success: true,
-      is_unlocked: true,
-      balance_after: balanceAfter,
-      detail_content: exp.detail_content,
+      isUnlocked: true,
+      detailContent: exp.detail_content,
+      balanceAfter,
     })
   }
 

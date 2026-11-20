@@ -7,6 +7,8 @@ export function ProfileView({
   onLogout,
   onOpenRecharge,
   onOpenAdmin,
+  onOpenTreasureVip,
+  onUpdateUser,
   onToast
 }) {
   const [pointsInfo, setPointsInfo] = useState({ points: 0, inviteCode: '', invitedCount: 0, unlocksCount: 0 })
@@ -14,6 +16,18 @@ export function ProfileView({
   const [unlocks, setUnlocks] = useState([])
   const [ledger, setLedger] = useState([])
   const [loading, setLoading] = useState(false)
+
+  const [showEditName, setShowEditName] = useState(false)
+  const [newNickname, setNewNickname] = useState('')
+  const [savingName, setSavingName] = useState(false)
+
+  const isVip = Boolean(
+    currentUser && (currentUser.isTreasureVip || currentUser.is_treasure_vip || currentUser.role === 'admin')
+  )
+
+  const safeDisplayName = currentUser
+    ? (currentUser.displayName || (currentUser.account?.includes('@') ? currentUser.account.split('@')[0] : '求职同学'))
+    : ''
 
   useEffect(() => {
     if (!currentUser) return
@@ -41,6 +55,28 @@ export function ProfileView({
     })
   }
 
+  const handleSaveNickname = async (e) => {
+    e.preventDefault()
+    const trimmed = newNickname.trim()
+    if (!trimmed) {
+      onToast('请输入有效的个性昵称')
+      return
+    }
+    setSavingName(true)
+    try {
+      const res = await apiClient.updateProfile({ displayName: trimmed })
+      if (res.success) {
+        if (onUpdateUser) onUpdateUser({ displayName: trimmed })
+        setShowEditName(false)
+        onToast('昵称修改成功！')
+      }
+    } catch (err) {
+      onToast(err.message || '修改失败')
+    } finally {
+      setSavingName(false)
+    }
+  }
+
   if (!currentUser) {
     return (
       <div className="view-container profile-guest">
@@ -61,15 +97,49 @@ export function ProfileView({
       {/* 顶部个人卡片 */}
       <div className="user-profile-card">
         <div className="user-info-row">
-          <div className="user-avatar-circle">{currentUser.displayName?.slice(0, 1) || '用'}</div>
+          <div className="user-avatar-circle">{safeDisplayName.slice(0, 1).toUpperCase() || '用'}</div>
           <div className="user-details">
-            <div className="user-name">
-              {currentUser.displayName}
+            <div className="user-name-line">
+              <span className="user-name">{safeDisplayName}</span>
               {currentUser.role === 'admin' && <span className="admin-badge">管理员</span>}
+              {isVip && <span className="profile-vip-badge">👑 藏宝阁会员</span>}
+              <button
+                type="button"
+                className="btn-edit-name-link"
+                onClick={() => {
+                  setNewNickname(safeDisplayName)
+                  setShowEditName(true)
+                }}
+                title="修改昵称"
+              >
+                ✏️ 修改
+              </button>
             </div>
             <div className="user-account">账号: {currentUser.account}</div>
           </div>
           <button className="btn-logout" onClick={onLogout}>退出</button>
+        </div>
+
+        {/* 藏宝阁专属权益卡 */}
+        <div className={`treasure-vip-card ${isVip ? 'active' : 'inactive'}`}>
+          <div className="vip-card-left">
+            <div className="vip-icon-circle">{isVip ? '👑' : '🏰'}</div>
+            <div className="vip-card-info">
+              <div className="vip-card-title">
+                {isVip ? '藏宝阁终身 VIP 会员' : '藏宝阁特权 · 财富法门'}
+              </div>
+              <div className="vip-card-desc">
+                {isVip
+                  ? '已享有全场名企面经复盘与题库资源免积分畅读'
+                  : '仅需 9.9 元，开启大厂核心面经与真题无门槛畅享'}
+              </div>
+            </div>
+          </div>
+          {!isVip && (
+            <button className="btn-vip-upgrade" onClick={onOpenTreasureVip}>
+              9.9元激活
+            </button>
+          )}
         </div>
 
         {/* 积分钱包卡片 */}
@@ -85,6 +155,39 @@ export function ProfileView({
           </div>
         </div>
       </div>
+
+      {/* 修改昵称弹窗 */}
+      {showEditName && (
+        <div className="modal-backdrop" onClick={() => setShowEditName(false)}>
+          <div className="modal-sheet modal-sm" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h3>修改个人昵称</h3>
+              <button className="modal-close" onClick={() => setShowEditName(false)}>✕</button>
+            </div>
+            <form onSubmit={handleSaveNickname} className="auth-form">
+              <label className="form-item">
+                <span>个性昵称 / 称谓</span>
+                <input
+                  type="text"
+                  placeholder="请输入您的专属昵称（请勿输入密码）"
+                  value={newNickname}
+                  onChange={(e) => setNewNickname(e.target.value)}
+                  maxLength={20}
+                  required
+                />
+              </label>
+              <div className="modal-actions-row">
+                <button type="button" className="btn-secondary" onClick={() => setShowEditName(false)}>
+                  取消
+                </button>
+                <button type="submit" className="btn-primary" disabled={savingName}>
+                  {savingName ? '保存中...' : '确认保存'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* 管理员专属入口 */}
       {currentUser.role === 'admin' && (

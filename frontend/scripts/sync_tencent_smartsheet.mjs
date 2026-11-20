@@ -7,8 +7,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const rootDir = path.resolve(__dirname, '../..')
 const seedsDir = path.join(rootDir, 'seeds')
 
-const DEFAULT_DOC_URL = 'https://docs.qq.com/smartsheet/DRmRGYkt4dW53VHds?tab=BB08J2&viewId=VUQPXH'
-const DEFAULT_DOC_ID = 'DRmRGYkt4dW53VHds'
+const DEFAULT_DOC_URL = 'https://docs.qq.com/smartsheet/DRmRGYk14dW53VHdS?tab=BB08J2&viewId=VUQPXH'
+const DEFAULT_DOC_ID = 'DRmRGYk14dW53VHdS'
 const DEFAULT_SUB_ID = 'BB08J2'
 
 export async function fetchTencentSmartsheetOnline(docId = DEFAULT_DOC_ID, subId = DEFAULT_SUB_ID, cookie = '') {
@@ -94,6 +94,20 @@ export async function runSync(options = {}) {
     console.warn(`[Crawler Warning] ${err.message}`)
     console.log('[Crawler] Gracefully falling back to verified local seeds / cache...')
     
+        // 降级回退：优先检查是否存在 HAR 文件并执行全量无损提取
+    const harPath = path.join(seedsDir, 'docs.qq.com.har')
+    if (fs.existsSync(harPath)) {
+      try {
+        const { execSync } = await import('node:child_process')
+        console.log('[Crawler Fallback] Found docs.qq.com.har, running parse_smartsheet_referrals.py...')
+        execSync('python frontend/scripts/parse_smartsheet_referrals.py', { stdio: 'inherit' })
+        console.log('[Crawler Fallback] Smartsheet parsed and migration 0010 generated successfully.')
+        return
+      } catch (e) {
+        console.warn('[Crawler Fallback] HAR parser execution note:', e.message)
+      }
+    }
+
     // 降级回退：读取 seeds/ 目录中保存的真实多维表格数据源
     const fallbackPath = path.join(seedsDir, 'smartsheet_real_jobs.json')
     if (fs.existsSync(fallbackPath)) {

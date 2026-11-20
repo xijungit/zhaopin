@@ -128,7 +128,7 @@ export function normalizeUrl(rawUrl) {
     console.warn(`[URL Warning] Truncated URL detected: "${url}".`)
   }
 
-  if (!/^https?:\/\//i.test(url)) {
+  if (!/^https?:\/\//i.test(url) && !url.startsWith('mailto:')) {
     url = 'https://' + url
   }
   return url
@@ -156,7 +156,7 @@ export function normalizeSmartsheetRow(row, index = 0) {
   const cities = parseCities(cityStr)
   const jobCategories = parseJobCategories(jobTitle)
   const applyUrl = normalizeUrl(rawUrl)
-  const dedupHash = generateDedupHash(company, jobTitle, applyUrl)
+  const dedupHash = generateDedupHash(company, jobTitle, applyUrl, recruitType)
   const id = `smartsheet_${String(index + 1).padStart(4, '0')}_${dedupHash.slice(0, 8)}`
 
   return {
@@ -170,7 +170,7 @@ export function normalizeSmartsheetRow(row, index = 0) {
     referral_code: refCode.trim(),
     apply_url: applyUrl,
     publish_time: publishTime,
-    deadline: '招满即止',
+    deadline: (row['截止时间'] || row['投递截止'] || row['deadline'] || '尽早投递').trim(),
     status: 'active',
     highlights: details.slice(0, 500).trim(),
     is_official_sync: 1,

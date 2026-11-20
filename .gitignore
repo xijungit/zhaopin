@@ -22,6 +22,10 @@ build/
 
 # Logs & temp
 *.log
+logs/
+*.har.prev
+# 登录态 Cookie 扩展文件（敏感凭证，严禁入库）
+seeds/tencent_docs_cookie.txt
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -43,3 +47,12 @@ Thumbs.db
 # Large network captures & raw har
 *.har
 t3cxoF_sample.json
+
+__pycache__/
+*.pyc
+
+.wrangler_home/
+
+local.db
+*
+*.bak

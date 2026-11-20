@@ -35,6 +35,7 @@ export function JobCard({ job, onToast }) {
           </div>
         </div>
         <div className="job-badges">
+          {job.soe_type && <span className="badge-soe">🏛️ {job.soe_type}</span>}
           {job.is_today_new && <span className="badge-new">🔥 今日首发</span>}
           {job.is_official_sync === 1 && <span className="badge-sync">⚡ 官网直通</span>}
         </div>
@@ -72,8 +73,10 @@ export function JobCard({ job, onToast }) {
             >
               {copied ? '✓ 已复制' : `内推码: ${job.referral_code}`}
             </button>
+          ) : job.channel_type === 'soe' ? (
+            <span className="no-code-tip soe-tip">🏛️ 官方公招直报</span>
           ) : (
-            <span className="no-code-tip">官方直申通道</span>
+            <span className="no-code-tip">⚡ 官网直通网申</span>
           )}
           <button className="btn-apply" onClick={(e) => { e.stopPropagation(); handleApply(); }}>
             去投递 ›

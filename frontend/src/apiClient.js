@@ -53,8 +53,9 @@ export const apiClient = {
     const search = new URLSearchParams(params).toString()
     return request(`/api/jobs${search ? `?${search}` : ''}`)
   },
-  getJobFilters() {
-    return request('/api/jobs/filters')
+  getJobFilters(params = {}) {
+    const search = new URLSearchParams(params).toString()
+    return request(`/api/jobs/filters${search ? `?${search}` : ''}`)
   },
   viewJob(id) {
     return request(`/api/jobs/${id}/view`, { method: 'POST' })
@@ -108,11 +109,25 @@ export const apiClient = {
       body: JSON.stringify(payload),
     })
   },
+  createTreasureVipOrder(payload = {}) {
+    return request('/api/pay/treasure-vip', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+  },
   queryPayOrder(orderId) {
     return request(`/api/pay/query?orderId=${encodeURIComponent(orderId)}`)
   },
   mockPayComplete(orderId) {
     return request(`/api/pay/mock-complete?orderId=${encodeURIComponent(orderId)}`)
+  },
+  selfConfirmPayOrder(orderId) {
+    return request('/api/pay/self-confirm', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ orderId }),
+    })
   },
 
   // 管理后台
@@ -129,28 +144,38 @@ export const apiClient = {
       body: JSON.stringify(data),
     })
   },
-  syncAdminSource(id) {
-    return request(`/api/admin/sources/${id}/sync`, { method: 'POST' })
-  },
-  syncAllAdminSources() {
-    return request('/api/admin/sources/sync-all', { method: 'POST' })
-  },
-  generateAdminCodes(payload) {
-    return request('/api/admin/redemption-codes/generate', {
-      method: 'POST',
+  updateAdminSource(id, data) {
+    return request(`/api/admin/sources/${id}`, {
+      method: 'PUT',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(data),
     })
   },
-  getAdminCodes(params = {}) {
-    const search = new URLSearchParams(params).toString()
-    return request(`/api/admin/redemption-codes${search ? `?${search}` : ''}`)
+  deleteAdminSource(id) {
+    return request(`/api/admin/sources/${id}`, { method: 'DELETE' })
   },
-  importAdminBatch(data) {
-    return request('/api/admin/batch-import', {
+  triggerSync(sourceId) {
+    return request(`/api/admin/sources/${sourceId}/sync`, { method: 'POST' })
+  },
+  getAdminJobs(params = {}) {
+    const search = new URLSearchParams(params).toString()
+    return request(`/api/admin/jobs${search ? `?${search}` : ''}`)
+  },
+  deleteAdminJob(id) {
+    return request(`/api/admin/jobs/${id}`, { method: 'DELETE' })
+  },
+  getAdminRedemptions(params = {}) {
+    const search = new URLSearchParams(params).toString()
+    return request(`/api/admin/redemptions${search ? `?${search}` : ''}`)
+  },
+  createAdminRedemptionBatch(data) {
+    return request('/api/admin/redemptions/batch', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(data),
     })
+  },
+  exportAdminRedemptions(batchId) {
+    return request(`/api/admin/redemptions/export?batchId=${encodeURIComponent(batchId)}`)
   },
 }

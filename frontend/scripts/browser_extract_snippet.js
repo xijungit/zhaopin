@@ -3,7 +3,7 @@
  * 
  * 使用方法：
  * 1. 在浏览器中打开腾讯文档多维表格页面（需保持登录或只读查看状态）：
- *    https://docs.qq.com/smartsheet/DRmRGYkt4dW53VHds?tab=BB08J2&viewId=VUQPXH
+ *    https://docs.qq.com/smartsheet/DRmRGYk14dW53VHdS?tab=BB08J2&viewId=VUQPXH
  * 2. 按 F12 打开开发者工具，切换到 Console（控制台）标签页。
  * 3. 复制并粘贴以下全部代码，按回车执行。
  * 4. 浏览器将自动弹窗下载完整的 `smartsheet_321_full.json`，其中包含全部无截断真实链接与内推码。

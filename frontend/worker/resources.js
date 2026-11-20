@@ -12,8 +12,10 @@ export async function handleResources(request, env, pathname) {
     const offset = Math.max(parseInt(url.searchParams.get('offset') || '0', 10), 0)
 
     const user = await getSessionUser(request, env)
+    const isVip = !!(user && (user.is_treasure_vip || user.role === 'admin'))
+
     let unlockedIds = new Set()
-    if (user) {
+    if (user && !isVip) {
       const unlocks = await env.DB.prepare(
         'SELECT target_id FROM user_unlocks WHERE user_id = ? AND target_type = "resource"'
       ).bind(user.user_id).all()
@@ -38,7 +40,7 @@ export async function handleResources(request, env, pathname) {
     const { results } = await env.DB.prepare(sql).bind(...params).all()
 
     const formatted = (results || []).map((row) => {
-      const isUnlocked = row.points_required === 0 || unlockedIds.has(row.id) || (user && user.role === 'admin')
+      const isUnlocked = isVip || row.points_required === 0 || unlockedIds.has(row.id)
       return {
         id: row.id,
         title: row.title,
@@ -49,6 +51,7 @@ export async function handleResources(request, env, pathname) {
         download_count: row.download_count,
         created_at: row.created_at,
         is_unlocked: isUnlocked,
+        is_vip_unlocked: isVip,
         drive_url: isUnlocked ? row.drive_url : null,
         access_code: isUnlocked ? row.access_code : null,
       }
@@ -70,72 +73,65 @@ export async function handleResources(request, env, pathname) {
     const resItem = await env.DB.prepare('SELECT * FROM resource_materials WHERE id = ?').bind(resId).first()
     if (!resItem) return Response.json({ error: '资料不存在' }, { status: 404 })
 
-    const existing = await env.DB.prepare(
-      'SELECT id FROM user_unlocks WHERE user_id = ? AND target_type = "resource" AND target_id = ?'
-    ).bind(user.user_id, resId).first()
-
-    if (existing) {
+    // 藏宝阁 VIP 直接免积分解锁
+    if (user.is_treasure_vip || user.role === 'admin') {
       return Response.json({
         success: true,
-        is_unlocked: true,
-        drive_url: resItem.drive_url,
-        access_code: resItem.access_code,
+        isUnlocked: true,
+        driveUrl: resItem.drive_url,
+        accessCode: resItem.access_code,
+        balanceAfter: user.points,
+        isVipUnlocked: true,
       })
     }
 
-    const pointsNeeded = resItem.points_required || 0
-    if (user.points < pointsNeeded) {
+    // 检查是否已解锁
+    const already = await env.DB.prepare(
+      'SELECT id FROM user_unlocks WHERE user_id = ? AND target_type = "resource" AND target_id = ?'
+    ).bind(user.user_id, resId).first()
+
+    if (already) {
       return Response.json({
-        error: `积分不足，兑换该资料需要 ${pointsNeeded} 积分，当前剩余 ${user.points} 积分`,
-        pointsNeeded,
-        currentPoints: user.points,
-      }, { status: 402 })
+        success: true,
+        isUnlocked: true,
+        driveUrl: resItem.drive_url,
+        accessCode: resItem.access_code,
+        balanceAfter: user.points,
+      })
     }
 
-    const balanceAfter = user.points - pointsNeeded
+    if (user.points < resItem.points_required) {
+      return Response.json({
+        error: `积分不足，下载需要 ${resItem.points_required} 积分，当前仅剩 ${user.points} 积分，请充值或开通藏宝阁会员`,
+        insufficientPoints: true,
+        pointsRequired: resItem.points_required,
+        currentPoints: user.points,
+      }, { status: 400 })
+    }
+
+    const balanceAfter = user.points - resItem.points_required
+    const unlockId = crypto.randomUUID()
+    const ledgerId = crypto.randomUUID()
+
     await env.DB.batch([
       env.DB.prepare('UPDATE users SET points = ? WHERE id = ?').bind(balanceAfter, user.user_id),
       env.DB.prepare(
-        `INSERT INTO points_ledger (id, user_id, amount, balance_after, action_type, related_id, remark)
-         VALUES (?, ?, ?, ?, 'unlock_resource', ?, ?)`
-      ).bind(crypto.randomUUID(), user.user_id, -pointsNeeded, balanceAfter, resId, `兑换求职资料《${resItem.title}》`),
-      env.DB.prepare(
         `INSERT INTO user_unlocks (id, user_id, target_type, target_id, points_spent)
          VALUES (?, ?, 'resource', ?, ?)`
-      ).bind(crypto.randomUUID(), user.user_id, resId, pointsNeeded),
-      env.DB.prepare('UPDATE resource_materials SET download_count = download_count + 1 WHERE id = ?').bind(resId)
+      ).bind(unlockId, user.user_id, resId, resItem.points_required),
+      env.DB.prepare(
+        `INSERT INTO points_ledger (id, user_id, amount, balance_after, action_type, related_id, remark)
+         VALUES (?, ?, ?, ?, 'unlock_resource', ?, ?)`
+      ).bind(ledgerId, user.user_id, -resItem.points_required, balanceAfter, resId, `兑换资料《${resItem.title}》`)
     ])
 
     return Response.json({
       success: true,
-      is_unlocked: true,
-      balance_after: balanceAfter,
-      drive_url: resItem.drive_url,
-      access_code: resItem.access_code,
+      isUnlocked: true,
+      driveUrl: resItem.drive_url,
+      accessCode: resItem.access_code,
+      balanceAfter,
     })
-  }
-
-  // GET /api/user/unlocks (我的已解锁资料与面经)
-  if (pathname === '/api/user/unlocks' && method === 'GET') {
-    const user = await getSessionUser(request, env)
-    if (!user) return Response.json({ error: '未登录' }, { status: 401 })
-
-    const unlocks = await env.DB.prepare(
-      `SELECT u.*, 
-        CASE 
-          WHEN u.target_type = 'resource' THEN r.title 
-          WHEN u.target_type = 'experience' THEN e.title 
-        END as title,
-        r.drive_url, r.access_code, r.file_format,
-        e.company_name, e.round_tag
-       FROM user_unlocks u
-       LEFT JOIN resource_materials r ON u.target_type = 'resource' AND u.target_id = r.id
-       LEFT JOIN interview_experiences e ON u.target_type = 'experience' AND u.target_id = e.id
-       WHERE u.user_id = ?
-       ORDER BY u.created_at DESC`
-    ).bind(user.user_id).all()
-
-    return Response.json({ items: unlocks.results || [] })
   }
 
   return null

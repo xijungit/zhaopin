@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react'
 import { apiClient, getAuthToken, setAuthToken } from './apiClient.js'
 import { JobsView } from './views/JobsView.jsx'
-import { ExperiencesView } from './views/ExperiencesView.jsx'
-import { ResourcesView } from './views/ResourcesView.jsx'
+import { EnterpriseJobsView } from './views/EnterpriseJobsView.jsx'
+import { SoeJobsView } from './views/SoeJobsView.jsx'
+import { TreasureView } from './views/TreasureView.jsx'
 import { ProfileView } from './views/ProfileView.jsx'
 import { AdminView } from './views/AdminView.jsx'
 import { PaymentModal } from './components/PaymentModal.jsx'
 import { UnlockModal } from './components/UnlockModal.jsx'
+import { TreasureLockModal } from './components/TreasureLockModal.jsx'
 import './App.css'
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('jobs') // 'jobs' | 'experiences' | 'resources' | 'profile' | 'admin'
+  const [activeTab, setActiveTab] = useState('jobs') // 'jobs' | 'enterprise' | 'soe' | 'treasure' | 'profile' | 'admin'
   const [currentUser, setCurrentUser] = useState(null)
   const [toastMsg, setToastMsg] = useState('')
 
@@ -25,6 +27,7 @@ export default function App() {
   const [authError, setAuthError] = useState('')
 
   const [showPayModal, setShowPayModal] = useState(false)
+  const [showTreasureModal, setShowTreasureModal] = useState(false)
   const [unlockTarget, setUnlockTarget] = useState(null) // { item, type: 'experience' | 'resource' }
 
   // 检查 URL 邀请参数 ?ref=XXXX
@@ -56,6 +59,17 @@ export default function App() {
     setTimeout(() => setToastMsg(''), 3000)
   }
 
+  const isVip = Boolean(
+    currentUser && (currentUser.isTreasureVip || currentUser.is_treasure_vip || currentUser.role === 'admin')
+  )
+
+  const handleTabSelect = (tab) => {
+    setActiveTab(tab)
+    if (tab === 'treasure' && !isVip) {
+      setShowTreasureModal(true)
+    }
+  }
+
   const handleAuthSubmit = async (e) => {
     e.preventDefault()
     setAuthLoading(true)
@@ -65,10 +79,15 @@ export default function App() {
       if (authMode === 'login') {
         res = await apiClient.login({ account: authAccount, password: authPassword })
       } else {
+        // 严禁将密码作为昵称存入；若昵称为空或与密码一致，默认采用邮箱前缀
+        let safeName = authDisplayName.trim()
+        if (!safeName || safeName === authPassword.trim()) {
+          safeName = authAccount.includes('@') ? authAccount.split('@')[0] : '求职同学'
+        }
         res = await apiClient.register({
           account: authAccount,
           password: authPassword,
-          displayName: authDisplayName || authAccount,
+          displayName: safeName,
           inviteCode: authInviteCode,
         })
       }
@@ -104,6 +123,24 @@ export default function App() {
     showToast(`充值到账成功！增加 ${pointsAdded} 积分`)
   }
 
+  const handleUpdateUser = (updatedFields) => {
+    if (currentUser) {
+      setCurrentUser({ ...currentUser, ...updatedFields })
+    }
+  }
+
+  const handleTreasureSuccess = () => {
+    if (currentUser) {
+      setCurrentUser({
+        ...currentUser,
+        isTreasureVip: true,
+        is_treasure_vip: 1,
+      })
+    }
+    showToast('🎉 恭喜有缘人！藏宝阁已成功激活，全场面经题库免积分开放！')
+    setShowTreasureModal(false)
+  }
+
   return (
     <div className="app-layout">
       {/* 顶部标题栏 */}
@@ -114,9 +151,16 @@ export default function App() {
         </div>
         <div className="topbar-user-wrap">
           {currentUser ? (
-            <div className="points-pill" onClick={() => setShowPayModal(true)}>
-              🪙 <span>{currentUser.points} 分</span>
-              <span className="plus-sign">+</span>
+            <div className="topbar-status-group">
+              {isVip && (
+                <div className="topbar-vip-pill" onClick={() => setActiveTab('treasure')}>
+                  👑 <span>藏宝阁会员</span>
+                </div>
+              )}
+              <div className="points-pill" onClick={() => setShowPayModal(true)}>
+                🪙 <span>{currentUser.points} 分</span>
+                <span className="plus-sign">+</span>
+              </div>
             </div>
           ) : (
             <button className="btn-login-sm" onClick={() => { setAuthMode('login'); setShowAuthModal(true); }}>
@@ -129,10 +173,12 @@ export default function App() {
       {/* 主界面切换 */}
       <main className="app-content">
         {activeTab === 'jobs' && <JobsView onToast={showToast} />}
-        {activeTab === 'experiences' && (
-          <ExperiencesView
+        {activeTab === 'enterprise' && <EnterpriseJobsView onToast={showToast} />}
+        {activeTab === 'soe' && <SoeJobsView onToast={showToast} />}
+        {activeTab === 'treasure' && (
+          <TreasureView
             currentUser={currentUser}
-            onToast={showToast}
+            onOpenVipModal={() => setShowTreasureModal(true)}
             onTriggerUnlock={(item, type) => {
               if (!currentUser) {
                 setShowAuthModal(true)
@@ -140,18 +186,7 @@ export default function App() {
               }
               setUnlockTarget({ item, type })
             }}
-          />
-        )}
-        {activeTab === 'resources' && (
-          <ResourcesView
             onToast={showToast}
-            onTriggerUnlock={(item, type) => {
-              if (!currentUser) {
-                setShowAuthModal(true)
-                return
-              }
-              setUnlockTarget({ item, type })
-            }}
           />
         )}
         {activeTab === 'profile' && (
@@ -161,6 +196,8 @@ export default function App() {
             onLogout={handleLogout}
             onOpenRecharge={() => setShowPayModal(true)}
             onOpenAdmin={() => setActiveTab('admin')}
+            onOpenTreasureVip={() => setShowTreasureModal(true)}
+            onUpdateUser={handleUpdateUser}
             onToast={showToast}
           />
         )}
@@ -172,35 +209,44 @@ export default function App() {
         )}
       </main>
 
-      {/* 移动端底部导航栏 (Tabbar) */}
+      {/* 移动端/桌面端 5项经典主导航栏 (Tabbar) */}
       <nav className="app-tabbar">
         <button
           className={`tab-btn ${activeTab === 'jobs' ? 'active' : ''}`}
-          onClick={() => setActiveTab('jobs')}
+          onClick={() => handleTabSelect('jobs')}
         >
           <span className="tab-icon">🔥</span>
           <span className="tab-label">内推广场</span>
         </button>
 
         <button
-          className={`tab-btn ${activeTab === 'experiences' ? 'active' : ''}`}
-          onClick={() => setActiveTab('experiences')}
+          className={`tab-btn ${activeTab === 'enterprise' ? 'active' : ''}`}
+          onClick={() => handleTabSelect('enterprise')}
         >
-          <span className="tab-icon">💡</span>
-          <span className="tab-label">面经复盘</span>
+          <span className="tab-icon">🏢</span>
+          <span className="tab-label">企业校招</span>
         </button>
 
         <button
-          className={`tab-btn ${activeTab === 'resources' ? 'active' : ''}`}
-          onClick={() => setActiveTab('resources')}
+          className={`tab-btn ${activeTab === 'soe' ? 'active' : ''}`}
+          onClick={() => handleTabSelect('soe')}
         >
-          <span className="tab-icon">📚</span>
-          <span className="tab-label">真题资料</span>
+          <span className="tab-icon">🏛️</span>
+          <span className="tab-label">央国企校招</span>
+        </button>
+
+        <button
+          className={`tab-btn tab-btn-treasure ${activeTab === 'treasure' ? 'active' : ''}`}
+          onClick={() => handleTabSelect('treasure')}
+        >
+          <span className="tab-icon">{isVip ? '👑' : '🏰'}</span>
+          <span className="tab-label">藏宝阁</span>
+          {!isVip && <span className="tab-corner-badge">9.9元</span>}
         </button>
 
         <button
           className={`tab-btn ${activeTab === 'profile' || activeTab === 'admin' ? 'active' : ''}`}
-          onClick={() => setActiveTab('profile')}
+          onClick={() => handleTabSelect('profile')}
         >
           <span className="tab-icon">👤</span>
           <span className="tab-label">我的中心</span>
@@ -234,17 +280,32 @@ export default function App() {
                 <span>账号 / 手机号 / 邮箱</span>
                 <input
                   type="text"
-                  placeholder="请输入登录账号"
+                  autoComplete="username"
+                  placeholder="请输入登录账号或邮箱"
                   value={authAccount}
                   onChange={(e) => setAuthAccount(e.target.value)}
                   required
                 />
               </label>
 
+              {authMode === 'register' && (
+                <label className="form-item">
+                  <span>用户昵称 / 称谓</span>
+                  <input
+                    type="text"
+                    autoComplete="nickname"
+                    placeholder="例如：小周同学、27届应届生（勿填密码）"
+                    value={authDisplayName}
+                    onChange={(e) => setAuthDisplayName(e.target.value)}
+                  />
+                </label>
+              )}
+
               <label className="form-item">
-                <span>密码</span>
+                <span>登录密码</span>
                 <input
                   type="password"
+                  autoComplete={authMode === 'register' ? 'new-password' : 'current-password'}
                   placeholder="请输入密码 (至少6位)"
                   value={authPassword}
                   onChange={(e) => setAuthPassword(e.target.value)}
@@ -253,26 +314,15 @@ export default function App() {
               </label>
 
               {authMode === 'register' && (
-                <>
-                  <label className="form-item">
-                    <span>昵称 / 称谓</span>
-                    <input
-                      type="text"
-                      placeholder="例如：27届求职者小张"
-                      value={authDisplayName}
-                      onChange={(e) => setAuthDisplayName(e.target.value)}
-                    />
-                  </label>
-                  <label className="form-item">
-                    <span>邀请码 (可选，填入双方各+50积分)</span>
-                    <input
-                      type="text"
-                      placeholder="请输入好友的邀请码"
-                      value={authInviteCode}
-                      onChange={(e) => setAuthInviteCode(e.target.value.toUpperCase())}
-                    />
-                  </label>
-                </>
+                <label className="form-item">
+                  <span>邀请码 (可选，填入双方各+50积分)</span>
+                  <input
+                    type="text"
+                    placeholder="请输入好友的邀请码"
+                    value={authInviteCode}
+                    onChange={(e) => setAuthInviteCode(e.target.value.toUpperCase())}
+                  />
+                </label>
               )}
 
               {authError && <div className="error-tip">{authError}</div>}
@@ -285,7 +335,19 @@ export default function App() {
         </div>
       )}
 
-      {/* 支付与卡密兑换弹窗 */}
+      {/* 9.9 元藏宝阁卡通动效门禁弹窗 */}
+      <TreasureLockModal
+        isOpen={showTreasureModal}
+        onClose={() => setShowTreasureModal(false)}
+        onSuccess={handleTreasureSuccess}
+        currentUser={currentUser}
+        onOpenLogin={() => {
+          setShowAuthModal(true)
+          setAuthMode('login')
+        }}
+      />
+
+      {/* 积分充值与卡密兑换弹窗 */}
       {showPayModal && (
         <PaymentModal
           onClose={() => setShowPayModal(false)}
@@ -294,7 +356,7 @@ export default function App() {
         />
       )}
 
-      {/* 积分解锁确认弹窗 */}
+      {/* 单篇积分解锁确认弹窗 */}
       {unlockTarget && (
         <UnlockModal
           item={unlockTarget.item}

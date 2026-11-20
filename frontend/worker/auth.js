@@ -50,7 +50,7 @@ export async function getSessionUser(request, env) {
   const now = new Date().toISOString()
 
   const session = await env.DB.prepare(
-    `SELECT s.id, s.user_id, s.expires_at, u.account, u.display_name, u.role, u.points, u.invite_code, u.referred_by
+    `SELECT s.id, s.user_id, s.expires_at, u.account, u.display_name, u.role, u.points, u.invite_code, u.referred_by, u.is_treasure_vip, u.treasure_vip_activated_at
      FROM sessions s
      JOIN users u ON s.user_id = u.id
      WHERE s.token_hash = ? AND s.expires_at > ?`
@@ -68,7 +68,12 @@ export async function handleAuth(request, env, pathname) {
     const body = await request.json().catch(() => ({}))
     const account = String(body.account || '').trim()
     const password = String(body.password || '').trim()
-    const displayName = String(body.displayName || account).trim()
+    let rawDisplayName = String(body.displayName || '').trim()
+    // 严禁将密码作为昵称保存，若昵称为空或与密码相同，默认使用账号邮箱前缀
+    if (!rawDisplayName || rawDisplayName === password) {
+      rawDisplayName = account.includes('@') ? account.split('@')[0] : '求职同学'
+    }
+    const displayName = rawDisplayName
     const refCode = String(body.inviteCode || body.ref || '').trim().toUpperCase()
 
     if (!account || account.length < 3) {
@@ -98,8 +103,8 @@ export async function handleAuth(request, env, pathname) {
     // 事务写入
     const stmts = [
       env.DB.prepare(
-        `INSERT INTO users (id, account, display_name, password_salt, password_hash, role, points, invite_code, referred_by)
-         VALUES (?, ?, ?, ?, ?, 'member', ?, ?, ?)`
+        `INSERT INTO users (id, account, display_name, password_salt, password_hash, role, points, invite_code, referred_by, is_treasure_vip)
+         VALUES (?, ?, ?, ?, ?, 'member', ?, ?, ?, 0)`
       ).bind(userId, account, displayName, salt, passwordHash, initialPoints + (inviter ? 50 : 0), myInviteCode, inviter ? inviter.id : null),
       env.DB.prepare(
         `INSERT INTO points_ledger (id, user_id, amount, balance_after, action_type, remark)
@@ -109,24 +114,18 @@ export async function handleAuth(request, env, pathname) {
 
     // 若有邀请人，双方各得 50 积分
     if (inviter) {
-      const inviterBonus = 50
-      const inviterBalanceAfter = inviter.points + inviterBonus
+      const inviterBalance = inviter.points + 50
       stmts.push(
-        env.DB.prepare('UPDATE users SET points = points + ? WHERE id = ?').bind(inviterBonus, inviter.id),
+        env.DB.prepare('UPDATE users SET points = points + 50 WHERE id = ?').bind(inviter.id),
         env.DB.prepare(
           `INSERT INTO points_ledger (id, user_id, amount, balance_after, action_type, related_id, remark)
-           VALUES (?, ?, ?, ?, 'invite_reward', ?, '成功邀请好友注册奖励')`
-        ).bind(crypto.randomUUID(), inviter.id, inviterBonus, inviterBalanceAfter, userId),
-        env.DB.prepare(
-          `INSERT INTO points_ledger (id, user_id, amount, balance_after, action_type, related_id, remark)
-           VALUES (?, ?, ?, ?, 'invitee_bonus', ?, '通过好友邀请注册专属加赠')`
-        ).bind(crypto.randomUUID(), userId, 50, initialPoints + 50, inviter.id)
+           VALUES (?, ?, 50, ?, 'invite_reward', ?, '邀请好友注册奖励')`
+        ).bind(crypto.randomUUID(), inviter.id, inviterBalance, userId)
       )
     }
 
     await env.DB.batch(stmts)
 
-    // 创建会话 token
     const token = crypto.randomUUID() + '-' + crypto.randomUUID()
     const tokenHash = await sha256(token)
     const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString()
@@ -145,8 +144,22 @@ export async function handleAuth(request, env, pathname) {
         role: 'member',
         points: initialPoints + (inviter ? 50 : 0),
         inviteCode: myInviteCode,
+        isTreasureVip: false,
       }
     })
+  }
+
+  // POST /api/auth/profile (更新昵称)
+  if (pathname === '/api/auth/profile' && method === 'POST') {
+    const user = await getSessionUser(request, env)
+    if (!user) return Response.json({ error: '未登录' }, { status: 401 })
+    const body = await request.json().catch(() => ({}))
+    const newDisplayName = String(body.displayName || '').trim()
+    if (!newDisplayName || newDisplayName.length < 1 || newDisplayName.length > 20) {
+      return Response.json({ error: '昵称长度为 1-20 个字符' }, { status: 400 })
+    }
+    await env.DB.prepare('UPDATE users SET display_name = ? WHERE id = ?').bind(newDisplayName, user.user_id).run()
+    return Response.json({ success: true, displayName: newDisplayName })
   }
 
   // POST /api/auth/login
@@ -156,7 +169,7 @@ export async function handleAuth(request, env, pathname) {
     const password = String(body.password || '').trim()
 
     const user = await env.DB.prepare(
-      'SELECT id, account, display_name, password_salt, password_hash, role, points, invite_code FROM users WHERE account = ?'
+      'SELECT id, account, display_name, password_salt, password_hash, role, points, invite_code, is_treasure_vip, treasure_vip_activated_at FROM users WHERE account = ?'
     ).bind(account).first()
 
     if (!user) {
@@ -186,6 +199,8 @@ export async function handleAuth(request, env, pathname) {
         role: user.role,
         points: user.points,
         inviteCode: user.invite_code,
+        isTreasureVip: !!user.is_treasure_vip,
+        treasureVipActivatedAt: user.treasure_vip_activated_at,
       }
     })
   }
@@ -193,8 +208,19 @@ export async function handleAuth(request, env, pathname) {
   // GET /api/auth/me
   if (pathname === '/api/auth/me' && method === 'GET') {
     const user = await getSessionUser(request, env)
-    if (!user) return Response.json({ error: '未登录' }, { status: 401 })
-    return Response.json({ user })
+    if (!user) return Response.json({ user: null })
+    return Response.json({
+      user: {
+        id: user.user_id,
+        account: user.account,
+        displayName: user.display_name,
+        role: user.role,
+        points: user.points,
+        inviteCode: user.invite_code,
+        isTreasureVip: !!user.is_treasure_vip,
+        treasureVipActivatedAt: user.treasure_vip_activated_at,
+      }
+    })
   }
 
   // POST /api/auth/logout

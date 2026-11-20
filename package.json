@@ -11,6 +11,6 @@
     "import:smartsheet": "node frontend/scripts/import_smartsheet_file.mjs",
     "deploy": "npm --prefix frontend run deploy",
     "import:resources": "node frontend/scripts/import_experiences_and_resources.mjs",
-    "sync:obsidian": "powershell -Command Copy-Item -Path docs/校招招聘平台全栈开发与多维表格数据同步全景文档.md -Destination D:/知识库/校招招聘平台全栈开发与多维表格数据同步全景文档.md -Force"
+    "sync:obsidian": "python sync_to_obsidian.py"
   }
 }

@@ -27,6 +27,15 @@ jobs:
       - name: Build frontend and worker
         run: npm --prefix frontend run build
 
+      - name: Check Cloudflare Credentials
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if [ -z "$CF_TOKEN" ]; then
+            echo "::error::GitHub Secret CLOUDFLARE_API_TOKEN is missing! Please configure it in repo Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+
       - name: Apply D1 remote migrations and deploy
         uses: cloudflare/wrangler-action@v3
         with:
